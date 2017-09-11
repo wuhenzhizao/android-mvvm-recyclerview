@@ -1,0 +1,63 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion Integer.parseInt(COMPILE_SDK_VERSION)
+    buildToolsVersion BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        minSdkVersion Integer.parseInt(MIN_SDK_VERSION)
+        targetSdkVersion Integer.parseInt(TARGET_SDK_VERSION)
+        versionCode Integer.parseInt(VERSION_CODE)
+        versionName VERSION_NAME
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        // 自动构建生产环境
+        release {
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            zipAlignEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+            debuggable true
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/rxjava.properties'
+    }
+
+    dataBinding {
+        enabled true
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(':library')
+    compile rootProject.ext.dependencies["multidex"]
+    compile rootProject.ext.dependencies["fresco"]
+    compile rootProject.ext.dependencies["fresco_imagepipeline_okhttp"]
+    compile rootProject.ext.dependencies["fresco_drawee"]
+    compile rootProject.ext.dependencies["fresco_fbcore"]
+    compile rootProject.ext.dependencies["fresco_animated_gif"]
+    compile rootProject.ext.dependencies["retrofit"]
+    compile rootProject.ext.dependencies["retrofit_gson"]
+    compile rootProject.ext.dependencies["retrofit_rxjava"]
+    compile rootProject.ext.dependencies["rxjava"]
+    compile rootProject.ext.dependencies["rxandroid"]
+    compile rootProject.ext.dependencies["okhttp"]
+    compile rootProject.ext.dependencies["okhttp_logging"]
+}
