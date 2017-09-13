@@ -8,22 +8,21 @@ import android.view.ViewGroup;
 import com.gomeos.mvvm.view.adapter.BaseRecyclerAdapter;
 import com.gomeos.mvvm.view.factory.ItemViewFactory;
 import com.gomeos.mvvm.viewmodel.RecyclerItemViewModel;
-import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersAdapter;
-import com.wuhenzhizao.viewbean.StickyViewBean;
+import com.wuhenzhizao.viewholder.DefaultViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by liufei on 2017/9/11.
+ * Created by liuyuxuan on 16/5/17.
  */
-public class StickyViewModelRecyclerViewAdapter extends BaseRecyclerAdapter implements StickyRecyclerHeadersAdapter<StickyViewModelRecyclerViewAdapter.ViewHolder> {
-    private final List<Class<?>> viewModelTypes;
-    private ItemViewFactory itemViewFactory;
-    private boolean isLooped;
-    private final int LOOP_COUNT = 10000000;
+public class ViewModelRecyclerViewAdapter extends BaseRecyclerAdapter {
+    protected final List<Class<?>> viewModelTypes;
+    protected ItemViewFactory itemViewFactory;
+    protected boolean isLooped;
+    protected final int LOOP_COUNT = 10000000;
 
-    public StickyViewModelRecyclerViewAdapter(Context context) {
+    public ViewModelRecyclerViewAdapter(Context context) {
         super(context);
         this.viewModelTypes = new ArrayList<>();
         setHasStableIds(false);
@@ -58,53 +57,18 @@ public class StickyViewModelRecyclerViewAdapter extends BaseRecyclerAdapter impl
         return index;
     }
 
-    protected class ViewHolder extends RecyclerView.ViewHolder {
-        RecyclerItemViewModel recyclerItemViewModel;
-        ViewDataBinding viewDataBinding;
-
-        public ViewHolder(RecyclerItemViewModel recyclerItemViewModel, ViewDataBinding viewDataBinding) {
-            super(viewDataBinding.getRoot());
-            this.recyclerItemViewModel = recyclerItemViewModel;
-            this.viewDataBinding = viewDataBinding;
-            this.recyclerItemViewModel.setView(viewDataBinding.getRoot());
-        }
-    }
-
-    @Override
-    public long getHeaderId(int position) {
-        StickyViewBean viewBean = getItem(position);
-        if (viewBean.isSticky()) {
-            return viewBean.getHeadId();
-        } else {
-            return 0;
-        }
-    }
-
     @Override
     public final RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         RecyclerItemViewModel vm = (RecyclerItemViewModel) itemViewFactory.getViewModel(viewModelTypes.get(viewType));
-        return new ViewHolder(vm, itemViewFactory.getViewDataBinding(vm));
+        return new DefaultViewHolder(vm, itemViewFactory.getViewDataBinding(vm));
     }
 
     @Override
     public final void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ViewHolder viewHolder = (ViewHolder) holder;
+        DefaultViewHolder viewHolder = (DefaultViewHolder) holder;
         RecyclerItemViewModel recyclerItemViewModel = viewHolder.recyclerItemViewModel;
         recyclerItemViewModel.setItem(getItem(position));
         viewHolder.viewDataBinding.executePendingBindings();
-    }
-
-    @Override
-    public ViewHolder onCreateHeaderViewHolder(ViewGroup parent, int position) {
-        RecyclerItemViewModel vm = (RecyclerItemViewModel) itemViewFactory.getViewModel(getItem(position));
-        return new ViewHolder(vm, itemViewFactory.getViewDataBinding(vm));
-    }
-
-    @Override
-    public void onBindHeaderViewHolder(ViewHolder holder, int position) {
-        RecyclerItemViewModel recyclerItemViewModel = holder.recyclerItemViewModel;
-        recyclerItemViewModel.setItem(getItem(position));
-        holder.viewDataBinding.executePendingBindings();
     }
 
     @Override
@@ -119,11 +83,11 @@ public class StickyViewModelRecyclerViewAdapter extends BaseRecyclerAdapter impl
 
 
     @Override
-    public StickyViewBean getItem(int position) {
+    public Object getItem(int position) {
         if (isLooped) {
             position = getCount() == 0 ? 0 : position % getCount();
         }
-        return (StickyViewBean) super.getItem(position);
+        return super.getItem(position);
     }
 
     public ItemViewFactory getItemViewFactory() {

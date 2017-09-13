@@ -29,5 +29,6 @@ dependencies {
     compile rootProject.ext.dependencies["appcompat"]
     compile rootProject.ext.dependencies["framework"]
     compile rootProject.ext.dependencies["recyclerview"]
+    compile rootProject.ext.dependencies["swipe"]
     testCompile rootProject.ext.dependencies["junit"]
 }
