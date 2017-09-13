@@ -1,8 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.wuhenzhizao.MainActivity">
+<layout>
 
-</RelativeLayout>
+    <data>
+
+        <variable
+            name="vm"
+            type="com.wuhenzhizao.viewmodule.MainViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:context="com.wuhenzhizao.view.ui.MainActivity">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:onClick="@{vm.singleStickyClickCommand}"
+            android:text="Single Type Sticky"
+            android:textAllCaps="false"
+            android:textSize="16dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:onClick="@{vm.multiStickyClickCommand}"
+            android:text="Multi Type Sticky"
+            android:textAllCaps="false"
+            android:textSize="16dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:onClick="@{vm.leftSwipeClickCommand}"
+            android:text="SwipeMenu Left"
+            android:textAllCaps="false"
+            android:textSize="16dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:onClick="@{vm.rightSwipeClickCommand}"
+            android:text="SwipeMenu Left"
+            android:textAllCaps="false"
+            android:textSize="16dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:onClick="@{vm.dragClickCommand}"
+            android:text="Drag"
+            android:textAllCaps="false"
+            android:textSize="16dp" />
+    </LinearLayout>
+
+</layout>

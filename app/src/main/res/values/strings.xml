@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">MVVMRecyclerViewAdapter</string>
+
+    <string-array name="drag_names">
+        <item>数据</item>
+        <item>WLAN</item>
+        <item>WLAN热点</item>
+        <item>飞行模式</item>
+        <item>GPS</item>
+        <item>截屏</item>
+        <item>手电筒</item>
+        <item>省电模式</item>
+        <item>蓝牙</item>
+        <item>自动亮度</item>
+        <item>静音</item>
+        <item>方向锁定</item>
+        <item>锁屏</item>
+        <item>快传</item>
+        <item>振动</item>
+        <item>同步</item>
+        <item>护眼模式</item>
+        <item>屏蔽按键</item>
+        <item>投射</item>
+        <item>勿扰模式</item>
+    </string-array>
 </resources>

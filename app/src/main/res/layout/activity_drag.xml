@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="com.wuhenzhizao.view.factory.DragItemViewFactory" />
+
+        <import type="com.gomeos.mvvm.view.LayoutManagers" />
+
+        <variable
+            name="vm"
+            type="com.wuhenzhizao.viewmodule.DragViewModel" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="10dp"
+            android:background="@color/colorPrimaryDark"/>
+
+        <com.wuhenzhizao.view.DragRecyclerView xmlns:drag="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/drv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar"
+            drag:callback="@{vm.dragCallBack}"
+            drag:layoutManager="@{LayoutManagers.linear()}"
+            drag:itemViewFactory="@{DragItemViewFactory.className}"
+            drag:items="@{vm.itemList}" />
+    </RelativeLayout>
+</layout>

@@ -8,9 +8,9 @@ import android.support.v7.widget.helper.ItemTouchHelper;
  */
 
 public class ItemTouchHelperCallBack extends ItemTouchHelper.Callback {
-    private OnItemDragCallBack callBack;
+    private ItemDragCallBack callBack;
 
-    public ItemTouchHelperCallBack(OnItemDragCallBack callBack) {
+    public ItemTouchHelperCallBack(ItemDragCallBack callBack) {
         this.callBack = callBack;
     }
 
@@ -33,6 +33,9 @@ public class ItemTouchHelperCallBack extends ItemTouchHelper.Callback {
 
     @Override
     public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+        if (viewHolder.getItemViewType() != target.getItemViewType()) {
+            return false;
+        }
         callBack.onDrag(viewHolder.getAdapterPosition(), target.getAdapterPosition());
         return true;
     }

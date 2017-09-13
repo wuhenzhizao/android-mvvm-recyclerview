@@ -1,11 +1,9 @@
 package com.wuhenzhizao.adapter;
 
 import android.content.Context;
-import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-import com.gomeos.mvvm.view.adapter.BaseRecyclerAdapter;
 import com.gomeos.mvvm.view.factory.ItemViewFactory;
 import com.gomeos.mvvm.viewmodel.RecyclerItemViewModel;
 import com.wuhenzhizao.viewholder.DefaultViewHolder;

@@ -4,16 +4,20 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.AttributeSet;
+import android.util.Log;
 
 import com.wuhenzhizao.adapter.DragRecyclerViewAdapter;
+import com.wuhenzhizao.callback.ItemDragCallBack;
 import com.wuhenzhizao.callback.ItemTouchHelperCallBack;
-import com.wuhenzhizao.callback.OnItemDragCallBack;
+
+import java.util.Collections;
 
 /**
  * Created by liufei on 2017/9/12.
  */
 
-public class DragRecyclerView extends DataBindingRecyclerView<DragRecyclerViewAdapter> implements OnItemDragCallBack {
+public class DragRecyclerView extends DataBindingRecyclerView<DragRecyclerViewAdapter> implements ItemDragCallBack {
+    private ItemDragCallBack callback;
 
     public DragRecyclerView(Context context) {
         super(context);
@@ -37,10 +41,17 @@ public class DragRecyclerView extends DataBindingRecyclerView<DragRecyclerViewAd
         helper.attachToRecyclerView(this);
     }
 
+    public void setCallback(ItemDragCallBack callback) {
+        this.callback = callback;
+    }
+
     @Override
-    public void onDrag(int oldPositon, int newPosition) {
+    public void onDrag(int fromPosition, int toPosition) {
         // 更新数据
-        items.add(newPosition, items.remove(oldPositon));
-        adapter.notifyItemMoved(oldPositon, newPosition);
+        Log.d("drag", fromPosition + " --- " + toPosition);
+        adapter.onItemMoved(fromPosition, toPosition);
+        if (callback != null) {
+            callback.onDrag(fromPosition, toPosition);
+        }
     }
 }
