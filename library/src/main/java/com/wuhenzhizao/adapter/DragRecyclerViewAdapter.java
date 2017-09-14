@@ -4,11 +4,13 @@ import android.content.Context;
 
 import java.util.Collections;
 
+import com.wuhenzhizao.factory.AbsViewFactory;
+
 /**
  * Created by liufei on 2017/9/12.
  */
 
-public class DragRecyclerViewAdapter extends ViewModelRecyclerViewAdapter {
+public class DragRecyclerViewAdapter extends ViewModelRecyclerViewAdapter<AbsViewFactory> {
 
     public DragRecyclerViewAdapter(Context context) {
         super(context);

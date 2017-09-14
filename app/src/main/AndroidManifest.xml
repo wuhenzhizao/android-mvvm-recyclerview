@@ -21,7 +21,7 @@
         </activity>
 
         <activity
-            android:name=".view.ui.StickyHeaderActivity"
+            android:name=".view.ui.StickyActivity"
             android:screenOrientation="portrait" />
 
         <activity

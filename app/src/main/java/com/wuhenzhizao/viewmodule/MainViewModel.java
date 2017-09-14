@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.gomeos.mvvm.viewmodel.LifecycleViewModel;
 import com.gomeos.mvvm.viewmodel.command.OnClickCommand;
 import com.wuhenzhizao.view.ui.DragActivity;
+import com.wuhenzhizao.view.ui.StickyActivity;
 
 /**
  * Created by liufei on 2017/9/13.
@@ -22,7 +23,9 @@ public class MainViewModel extends LifecycleViewModel {
         return new OnClickCommand() {
             @Override
             public void execute(int viewId) {
-
+                Intent intent = new Intent(getContext(), StickyActivity.class);
+                intent.putExtra("mode", StickyActivity.MODE_SINGLE);
+                startActivity(intent);
             }
         };
     }
@@ -31,7 +34,9 @@ public class MainViewModel extends LifecycleViewModel {
         return new OnClickCommand() {
             @Override
             public void execute(int viewId) {
-
+                Intent intent = new Intent(getContext(), StickyActivity.class);
+                intent.putExtra("mode", StickyActivity.MODE_MULTI);
+                startActivity(intent);
             }
         };
     }

@@ -17,6 +17,9 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         ActivityMainBinding binding = DataBindingFactory.setContentView(this, R.layout.activity_main);
 
+        setSupportActionBar(binding.toolbar);
+        getSupportActionBar().setTitle("MVMMRecyclerViewAdapter");
+
         ViewModelFactory factory = MainModule.getInstance().getViewModelFactory();
         MainViewModel viewModel = factory.createViewModel("main_view_model", MainViewModel.class, this);
         binding.setVm(viewModel);

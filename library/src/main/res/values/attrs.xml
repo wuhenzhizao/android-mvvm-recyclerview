@@ -3,4 +3,8 @@
     <declare-styleable name="DragRecyclerView">
         <attr name="callback" format="reference" />
     </declare-styleable>
+
+    <declare-styleable name="StickHeaderRecyclerView">
+        <attr name="headerClickListener" format="reference" />
+    </declare-styleable>
 </resources>

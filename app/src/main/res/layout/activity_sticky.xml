@@ -3,13 +3,13 @@
 
     <data>
 
-        <import type="com.wuhenzhizao.view.factory.DragItemViewFactory" />
+        <import type="com.wuhenzhizao.view.factory.StickyItemViewFactory" />
 
         <import type="com.gomeos.mvvm.view.LayoutManagers" />
 
         <variable
             name="vm"
-            type="com.wuhenzhizao.viewmodule.DragViewModel" />
+            type="com.wuhenzhizao.viewmodule.StickyViewModel" />
     </data>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -25,14 +25,14 @@
             android:background="@color/colorPrimaryDark"
             android:elevation="10dp" />
 
-        <com.wuhenzhizao.view.DragRecyclerView xmlns:drag="http://schemas.android.com/apk/res-auto"
+        <com.wuhenzhizao.view.StickyHeaderRecyclerView xmlns:sticky="http://schemas.android.com/apk/res-auto"
             android:id="@+id/drv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/toolbar"
-            drag:callback="@{vm.dragCallBack}"
-            drag:itemViewFactory="@{DragItemViewFactory.className}"
-            drag:items="@{vm.itemList}"
-            drag:layoutManager="@{LayoutManagers.linear()}" />
+            sticky:headerClickListener="@{vm.headerClickListener}"
+            sticky:itemViewFactory="@{StickyItemViewFactory.className}"
+            sticky:items="@{vm.itemList}"
+            sticky:layoutManager="@{LayoutManagers.linear()}" />
     </RelativeLayout>
 </layout>

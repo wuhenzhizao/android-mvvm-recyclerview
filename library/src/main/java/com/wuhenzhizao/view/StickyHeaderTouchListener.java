@@ -1,38 +1,31 @@
-package com.timehop.stickyheadersrecyclerview;
+package com.wuhenzhizao.view;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.SoundEffectConstants;
 import android.view.View;
+import android.view.ViewGroup;
 
-public class StickyRecyclerHeadersTouchListener implements RecyclerView.OnItemTouchListener {
+/**
+ * Created by liufei on 2017/9/14.
+ */
+class StickyHeaderTouchListener implements RecyclerView.OnItemTouchListener {
     private final GestureDetector mTapDetector;
-    private final RecyclerView mRecyclerView;
+    private final StickyHeaderRecyclerView mRecyclerView;
     private final StickyRecyclerHeadersDecoration mDecor;
     private OnHeaderClickListener mOnHeaderClickListener;
 
     public interface OnHeaderClickListener {
-        void onHeaderClick(View header, int position, long headerId);
+        void onHeaderClick(View headerView, View clickView, int position, long headerId);
     }
 
-    public StickyRecyclerHeadersTouchListener(final RecyclerView recyclerView,
-                                              final StickyRecyclerHeadersDecoration decor) {
+    public StickyHeaderTouchListener(final StickyHeaderRecyclerView recyclerView,
+                                     final StickyRecyclerHeadersDecoration decor) {
         mTapDetector = new GestureDetector(recyclerView.getContext(), new SingleTapDetector());
         mRecyclerView = recyclerView;
         mDecor = decor;
     }
-
-    public StickyRecyclerHeadersAdapter getAdapter() {
-        if (mRecyclerView.getAdapter() instanceof StickyRecyclerHeadersAdapter) {
-            return (StickyRecyclerHeadersAdapter) mRecyclerView.getAdapter();
-        } else {
-            throw new IllegalStateException("A RecyclerView with " +
-                    StickyRecyclerHeadersTouchListener.class.getSimpleName() +
-                    " requires a " + StickyRecyclerHeadersAdapter.class.getSimpleName());
-        }
-    }
-
 
     public void setOnHeaderClickListener(OnHeaderClickListener listener) {
         mOnHeaderClickListener = listener;
@@ -47,8 +40,8 @@ public class StickyRecyclerHeadersTouchListener implements RecyclerView.OnItemTo
                 return true;
             }
             if (e.getAction() == MotionEvent.ACTION_DOWN) {
-                int position = mDecor.findHeaderPositionUnder((int) e.getX(), (int) e.getY());
-                return position != -1;
+                View v = mDecor.findHeaderViewUnder((int) e.getX(), (int) e.getY());
+                return v != null;
             }
         }
         return false;
@@ -65,13 +58,24 @@ public class StickyRecyclerHeadersTouchListener implements RecyclerView.OnItemTo
     private class SingleTapDetector extends GestureDetector.SimpleOnGestureListener {
         @Override
         public boolean onSingleTapUp(MotionEvent e) {
-            int position = mDecor.findHeaderPositionUnder((int) e.getX(), (int) e.getY());
-            if (position != -1) {
-                View headerView = mDecor.getHeaderView(mRecyclerView, position);
-                long headerId = getAdapter().getHeaderId(position);
-                mOnHeaderClickListener.onHeaderClick(headerView, position, headerId);
+            View v = mDecor.findHeaderViewUnder((int) e.getX(), (int) e.getY());
+            if (v != null) {
+                View headerView = null;
+                View temp = v;
+                while (temp instanceof ViewGroup) {
+                    ViewGroup parent = (ViewGroup) temp.getParent();
+                    if (parent == null || parent.getLayoutParams() instanceof RecyclerView.LayoutParams) {
+                        headerView = temp;
+                        break;
+                    } else {
+                        temp = parent;
+                    }
+                }
+                int position = (int) headerView.getTag();
+                long headerId = mRecyclerView.getAdapter().getHeaderId(position);
+                mOnHeaderClickListener.onHeaderClick(headerView, v, position, headerId);
                 mRecyclerView.playSoundEffect(SoundEffectConstants.CLICK);
-                headerView.onTouchEvent(e);
+                v.onTouchEvent(e);
                 return true;
             }
             return false;

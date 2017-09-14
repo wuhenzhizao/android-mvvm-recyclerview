@@ -8,11 +8,12 @@ import android.util.AttributeSet;
 
 import com.gomeos.mvvm.utils.ObjectUtils;
 import com.gomeos.mvvm.view.LayoutManagers;
-import com.gomeos.mvvm.view.factory.ItemViewFactory;
 import com.wuhenzhizao.adapter.R;
 import com.wuhenzhizao.adapter.ViewModelRecyclerViewAdapter;
 
 import java.util.List;
+
+import com.wuhenzhizao.factory.AbsViewFactory;
 
 /**
  * Created by chenbaocheng on 16/8/14.
@@ -36,6 +37,7 @@ public abstract class DataBindingRecyclerView<RVA extends ViewModelRecyclerViewA
 
         initAttributes(context, attrs);
         initSettings();
+        setHasFixedSize(true);
     }
 
     protected final void initBasicAttributes(Context context, AttributeSet attrs) {
@@ -66,7 +68,7 @@ public abstract class DataBindingRecyclerView<RVA extends ViewModelRecyclerViewA
     }
 
     public void setItemViewFactory(String className) {
-        ItemViewFactory factory = ObjectUtils.newInstance(className);
+        AbsViewFactory factory = ObjectUtils.newInstance(className);
         factory.setContext(getContext());
         adapter.setItemViewFactory(factory);
     }

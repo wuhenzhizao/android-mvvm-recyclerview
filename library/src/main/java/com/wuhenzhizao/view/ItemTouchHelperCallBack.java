@@ -1,13 +1,14 @@
-package com.wuhenzhizao.callback;
+package com.wuhenzhizao.view;
 
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
+import com.wuhenzhizao.callback.ItemDragCallBack;
+
 /**
  * Created by liufei on 2017/9/12.
  */
-
-public class ItemTouchHelperCallBack extends ItemTouchHelper.Callback {
+class ItemTouchHelperCallBack extends ItemTouchHelper.Callback {
     private ItemDragCallBack callBack;
 
     public ItemTouchHelperCallBack(ItemDragCallBack callBack) {

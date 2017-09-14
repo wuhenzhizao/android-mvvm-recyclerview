@@ -10,10 +10,12 @@ import com.daimajia.swipe.util.Attributes;
 
 import java.util.List;
 
+import com.wuhenzhizao.factory.AbsViewFactory;
+
 /**
  * Created by liufei on 2017/9/11.
  */
-public class SwipeMenuRecyclerViewAdapter extends ViewModelRecyclerViewAdapter implements SwipeItemMangerInterface, SwipeAdapterInterface {
+public class SwipeMenuRecyclerViewAdapter extends ViewModelRecyclerViewAdapter<AbsViewFactory> implements SwipeItemMangerInterface, SwipeAdapterInterface {
     private SwipeItemRecyclerMangerImpl mItemManger = new SwipeItemRecyclerMangerImpl(this);
 
     public SwipeMenuRecyclerViewAdapter(Context context) {

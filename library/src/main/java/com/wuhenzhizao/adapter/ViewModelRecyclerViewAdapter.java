@@ -4,19 +4,20 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-import com.gomeos.mvvm.view.factory.ItemViewFactory;
 import com.gomeos.mvvm.viewmodel.RecyclerItemViewModel;
 import com.wuhenzhizao.viewholder.DefaultViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.wuhenzhizao.factory.AbsViewFactory;
+
 /**
  * Created by liuyuxuan on 16/5/17.
  */
-public class ViewModelRecyclerViewAdapter extends BaseRecyclerAdapter {
+public class ViewModelRecyclerViewAdapter<Factory extends AbsViewFactory> extends BaseRecyclerAdapter {
     protected final List<Class<?>> viewModelTypes;
-    protected ItemViewFactory itemViewFactory;
+    protected Factory itemViewFactory;
     protected boolean isLooped;
     protected final int LOOP_COUNT = 10000000;
 
@@ -88,11 +89,11 @@ public class ViewModelRecyclerViewAdapter extends BaseRecyclerAdapter {
         return super.getItem(position);
     }
 
-    public ItemViewFactory getItemViewFactory() {
+    public Factory getItemViewFactory() {
         return itemViewFactory;
     }
 
-    public void setItemViewFactory(ItemViewFactory itemViewFactory) {
+    public void setItemViewFactory(Factory itemViewFactory) {
         this.itemViewFactory = itemViewFactory;
     }
 }
