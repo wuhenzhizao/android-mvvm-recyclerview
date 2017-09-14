@@ -73,7 +73,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginTop="5dp"
             android:onClick="@{vm.dragClickCommand}"
-            android:text="Drag"
+            android:text="Long Press to Drag"
             android:textAllCaps="false"
             android:textSize="16dp" />
     </LinearLayout>

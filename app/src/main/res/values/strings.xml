@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MVVMRecyclerViewAdapter</string>
+    <string name="app_name">MVVMRecyclerView</string>
 
     <string-array name="drag_names">
         <item>数据</item>

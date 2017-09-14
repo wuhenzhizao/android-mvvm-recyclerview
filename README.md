@@ -1,2 +1,2 @@
-# MVVM-RecyclerView-Adapter
-Wrapper of recycler view adapter with mvvm
+# MVVM-RecyclerView
+Wrapper of recycler view with mvvm
