@@ -1,5 +1,7 @@
 package com.wuhenzhizao.viewmodule;
 
+import android.widget.Toast;
+
 import com.gomeos.mvvm.viewmodel.RecyclerItemViewModel;
 import com.gomeos.mvvm.viewmodel.command.OnClickCommand;
 import com.wuhenzhizao.viewmodule.viewbean.StickyItemViewBean;
@@ -19,7 +21,7 @@ public class StickyItemViewModel extends RecyclerItemViewModel<StickyItemViewBea
         return new OnClickCommand() {
             @Override
             public void execute(int viewId) {
-
+                Toast.makeText(getContext(), "Item " + name + " clicked", Toast.LENGTH_SHORT).show();
             }
         };
     }

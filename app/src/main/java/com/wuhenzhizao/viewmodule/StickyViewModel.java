@@ -2,6 +2,7 @@ package com.wuhenzhizao.viewmodule;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.gomeos.mvvm.viewmodel.LifecycleViewModel;
 import com.wuhenzhizao.callback.ItemHeaderClickListener;
@@ -35,6 +36,8 @@ public class StickyViewModel extends LifecycleViewModel {
                 StickyItemViewBean viewBean = itemList.get(position);
                 viewBean.setCollect(!viewBean.isCollect());
                 notifyChange();
+
+                Toast.makeText(getContext(), "Header " + viewBean.getTitle() + " clicked", Toast.LENGTH_SHORT).show();
             }
         };
     }
@@ -48,7 +51,7 @@ public class StickyViewModel extends LifecycleViewModel {
                 viewBean.setHeadId(i + 1);
                 viewBean.setTitle(Address.provinces[i]);
                 viewBean.setName(Address.citys[i][j]);
-                if (mode == StickyActivity.MODE_SINGLE){
+                if (mode == StickyActivity.MODE_SINGLE) {
                     viewBean.setStickyTheme(1);
                 } else {
                     if (i % 2 == 0) {
