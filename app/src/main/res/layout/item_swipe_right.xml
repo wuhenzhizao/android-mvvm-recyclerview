@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.wuhenzhizao.viewmodule.SwipeRightItemViewModel" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.daimajia.swipe.SwipeLayout xmlns:swipe="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/swipe_layout"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:background="@android:color/white"
+            swipe:clickToClose="true"
+            swipe:drag_edge="right"
+            swipe:show_mode="pull_out">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/comm_btn_yellow_selector"
+                android:onClick="@{vm.deleteCommand}">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:gravity="center"
+                    android:text="Delete"
+                    android:textColor="#333333"
+                    android:textSize="16dp" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:padding="15dp"
+                android:text="@{vm.name}"
+                android:textColor="#333333"
+                android:textSize="16dp" />
+        </com.daimajia.swipe.SwipeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@id/swipe_layout"
+            android:background="#E4E4E4" />
+    </RelativeLayout>
+</layout>

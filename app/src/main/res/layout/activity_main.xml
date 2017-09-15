@@ -62,7 +62,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginTop="5dp"
             android:onClick="@{vm.rightSwipeClickCommand}"
-            android:text="SwipeMenu Left"
+            android:text="SwipeMenu Right"
             android:textAllCaps="false"
             android:textSize="16dp" />
 

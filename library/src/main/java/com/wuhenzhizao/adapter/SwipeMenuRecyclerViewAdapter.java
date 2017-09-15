@@ -7,10 +7,9 @@ import com.daimajia.swipe.implments.SwipeItemRecyclerMangerImpl;
 import com.daimajia.swipe.interfaces.SwipeAdapterInterface;
 import com.daimajia.swipe.interfaces.SwipeItemMangerInterface;
 import com.daimajia.swipe.util.Attributes;
+import com.wuhenzhizao.factory.AbsViewFactory;
 
 import java.util.List;
-
-import com.wuhenzhizao.factory.AbsViewFactory;
 
 /**
  * Created by wuhenzhizao on 2017/9/11.

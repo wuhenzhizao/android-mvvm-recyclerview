@@ -6,13 +6,13 @@ import com.wuhenzhizao.viewbean.StickyViewBean;
  * Created by wuhenzhizao on 2017/9/14.
  */
 
-public class StickyItemViewBean extends StickyViewBean {
+public class StickyTestViewBean extends com.wuhenzhizao.viewbean.StickyViewBean {
     private String title;
     private String name;
     private int stickyTheme;
     private boolean collect;
 
-    public StickyItemViewBean(boolean isSticky) {
+    public StickyTestViewBean(boolean isSticky) {
         super(isSticky);
     }
 
@@ -50,7 +50,7 @@ public class StickyItemViewBean extends StickyViewBean {
 
     @Override
     public String toString() {
-        return "StickyItemViewBean{" +
+        return "StickyTestViewBean{" +
                 "title='" + title + '\'' +
                 ", name='" + name + '\'' +
                 ", stickyTheme=" + stickyTheme +

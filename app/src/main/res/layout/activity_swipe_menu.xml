@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="com.wuhenzhizao.view.factory.SwipeItemViewFactory" />
+
+        <import type="com.gomeos.mvvm.view.LayoutManagers" />
+
+        <variable
+            name="vm"
+            type="com.wuhenzhizao.viewmodule.SwipeViewModel" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.ui.SwipeMenuActivity">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:elevation="10dp" />
+
+        <com.wuhenzhizao.view.SwipeMenuRecyclerView xmlns:sticky="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/drv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar"
+            sticky:itemViewFactory="@{SwipeItemViewFactory.className}"
+            sticky:items="@{vm.itemList}"
+            sticky:layoutManager="@{LayoutManagers.linear()}" />
+    </RelativeLayout>
+</layout>

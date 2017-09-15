@@ -2,8 +2,6 @@ package com.wuhenzhizao.view.factory;
 
 import android.databinding.ViewDataBinding;
 
-import com.gomeos.mvvm.view.DataBindingFactory;
-import com.gomeos.mvvm.view.factory.ItemViewFactory;
 import com.gomeos.mvvm.viewmodel.AbsItemViewModel;
 import com.wuhenzhizao.R;
 import com.wuhenzhizao.databinding.ItemDragBinding;
@@ -28,7 +26,7 @@ public class DragItemViewFactory extends AbsViewFactory<DragViewBean> {
 
     @Override
     protected ViewDataBinding createViewDataBinding(AbsItemViewModel viewModel) {
-        ItemDragBinding dragBinding = DataBindingFactory.inflate(getContext(), R.layout.item_drag);
+        ItemDragBinding dragBinding = inflate(R.layout.item_drag);
         dragBinding.setVm((DragItemViewModel) viewModel);
         return dragBinding;
     }

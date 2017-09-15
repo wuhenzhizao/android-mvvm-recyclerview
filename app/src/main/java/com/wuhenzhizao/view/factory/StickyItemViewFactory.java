@@ -9,26 +9,25 @@ import com.wuhenzhizao.databinding.ItemStickyContentBinding;
 import com.wuhenzhizao.databinding.ItemStickyHeaderBinding;
 import com.wuhenzhizao.databinding.ItemStickyMenuBinding;
 import com.wuhenzhizao.factory.StickyViewFactory;
-import com.wuhenzhizao.viewbean.StickyViewBean;
 import com.wuhenzhizao.viewmodule.StickyHeaderItemViewModel;
 import com.wuhenzhizao.viewmodule.StickyItemViewModel;
 import com.wuhenzhizao.viewmodule.StickyMenuItemViewModel;
-import com.wuhenzhizao.viewmodule.viewbean.StickyItemViewBean;
+import com.wuhenzhizao.viewmodule.viewbean.StickyTestViewBean;
 
 /**
  * Created by wuhenzhizao on 2017/9/14.
  */
 
-public class StickyItemViewFactory extends StickyViewFactory<StickyViewBean> {
+public class StickyItemViewFactory extends StickyViewFactory<com.wuhenzhizao.viewbean.StickyViewBean> {
 
     public static String getClassName() {
         return StickyItemViewFactory.class.getName();
     }
 
     @Override
-    protected Class<? extends AbsItemViewModel> getHeaderViewModelType(StickyViewBean item) {
-        if (item instanceof StickyItemViewBean) {
-            if (((StickyItemViewBean) item).getStickyTheme() == 1){
+    protected Class<? extends AbsItemViewModel> getHeaderViewModelType(com.wuhenzhizao.viewbean.StickyViewBean item) {
+        if (item instanceof StickyTestViewBean) {
+            if (((StickyTestViewBean) item).getStickyTheme() == 1){
                 return StickyHeaderItemViewModel.class;
             } else {
                 return StickyMenuItemViewModel.class;
@@ -52,8 +51,8 @@ public class StickyItemViewFactory extends StickyViewFactory<StickyViewBean> {
     }
 
     @Override
-    protected Class<? extends AbsItemViewModel> getViewModelType(StickyViewBean item) {
-        if (item instanceof StickyItemViewBean) {
+    protected Class<? extends AbsItemViewModel> getViewModelType(com.wuhenzhizao.viewbean.StickyViewBean item) {
+        if (item instanceof StickyTestViewBean) {
             return StickyItemViewModel.class;
         }
         return null;
@@ -62,7 +61,7 @@ public class StickyItemViewFactory extends StickyViewFactory<StickyViewBean> {
     @Override
     protected ViewDataBinding createViewDataBinding(AbsItemViewModel viewModel) {
         if (viewModel instanceof StickyItemViewModel) {
-            ItemStickyContentBinding contentBinding = DataBindingFactory.inflate(getContext(), R.layout.item_sticky_content);
+            ItemStickyContentBinding contentBinding = inflate(R.layout.item_sticky_content);
             contentBinding.setVm((StickyItemViewModel) viewModel);
             return contentBinding;
         }

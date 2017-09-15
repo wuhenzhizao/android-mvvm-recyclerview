@@ -7,6 +7,7 @@ import com.gomeos.mvvm.viewmodel.LifecycleViewModel;
 import com.gomeos.mvvm.viewmodel.command.OnClickCommand;
 import com.wuhenzhizao.view.ui.DragActivity;
 import com.wuhenzhizao.view.ui.StickyActivity;
+import com.wuhenzhizao.view.ui.SwipeMenuActivity;
 
 /**
  * Created by wuhenzhizao on 2017/9/13.
@@ -45,7 +46,9 @@ public class MainViewModel extends LifecycleViewModel {
         return new OnClickCommand() {
             @Override
             public void execute(int viewId) {
-
+                Intent intent = new Intent(getContext(), SwipeMenuActivity.class);
+                intent.putExtra("mode", SwipeMenuActivity.LEFT);
+                startActivity(intent);
             }
         };
     }
@@ -54,7 +57,9 @@ public class MainViewModel extends LifecycleViewModel {
         return new OnClickCommand() {
             @Override
             public void execute(int viewId) {
-
+                Intent intent = new Intent(getContext(), SwipeMenuActivity.class);
+                intent.putExtra("mode", SwipeMenuActivity.RIGHT);
+                startActivity(intent);
             }
         };
     }
