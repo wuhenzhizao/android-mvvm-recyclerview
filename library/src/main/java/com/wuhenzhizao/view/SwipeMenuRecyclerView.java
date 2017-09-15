@@ -103,7 +103,7 @@ public class SwipeMenuRecyclerView extends DataBindingRecyclerView<SwipeMenuRecy
         switch (e.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 touchingPosition = getChildAdapterPosition(findChildViewUnder(e.getX(), e.getY()));
-                if (touchingPosition != mOldTouchedPosition && isOldSwipeLayoutStatusOpen() && !isClosing) {
+                if (touchingPosition != mOldTouchedPosition && isOldSwipeLayoutStatusOpen()) {
                     closeSwipeLayout();
                     isIntercepted = true;
                 }
@@ -147,6 +147,6 @@ public class SwipeMenuRecyclerView extends DataBindingRecyclerView<SwipeMenuRecy
             public void run() {
                 isClosing = false;
             }
-        }, 500);
+        }, 1000);
     }
 }
