@@ -4,9 +4,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
 /**
- * Created by liufei on 2017/9/14.
+ * Created by wuhenzhizao on 2017/9/14.
  */
-public interface StickyHeaderAdapter<T extends RecyclerView.ViewHolder> {
+interface StickyHeaderAdapter<T extends RecyclerView.ViewHolder> {
 
     long getHeaderId(int position);
 

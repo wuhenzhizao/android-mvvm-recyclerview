@@ -5,7 +5,7 @@ import android.databinding.ViewDataBinding;
 import com.gomeos.mvvm.viewmodel.AbsItemViewModel;
 
 /**
- * Created by liufei on 2017/9/14.
+ * Created by wuhenzhizao on 2017/9/14.
  */
 
 public interface Factory<ItemType> {

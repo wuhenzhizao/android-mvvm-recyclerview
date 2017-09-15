@@ -5,7 +5,7 @@ import android.databinding.ViewDataBinding;
 import com.gomeos.mvvm.viewmodel.AbsItemViewModel;
 
 /**
- * Created by chenbaocheng on 16/8/11.
+ * Created by wuhenzhizao on 2017/9/14.
  */
 public abstract class StickyViewFactory<ItemType> extends AbsViewFactory<ItemType> {
 

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by liufei on 2017/9/11.
+ * Created by wuhenzhizao on 2017/9/11.
  */
 public class SwipeMenuRecyclerView extends DataBindingRecyclerView<SwipeMenuRecyclerViewAdapter> {
     private SwipeLayout oldSwipeLayout;

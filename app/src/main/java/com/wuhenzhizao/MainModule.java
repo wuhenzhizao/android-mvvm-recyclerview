@@ -5,7 +5,7 @@ import com.gomeos.mvvm.model.UseCaseManager;
 import com.wuhenzhizao.model.MainUseCase;
 
 /**
- * Created by liufei on 2017/9/13.
+ * Created by wuhenzhizao on 2017/9/13.
  */
 
 public class MainModule extends FrameworkModule {

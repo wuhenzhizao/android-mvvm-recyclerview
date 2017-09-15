@@ -9,7 +9,7 @@ import com.wuhenzhizao.adapter.DragRecyclerViewAdapter;
 import com.wuhenzhizao.callback.ItemDragCallBack;
 
 /**
- * Created by liufei on 2017/9/12.
+ * Created by wuhenzhizao on 2017/9/12.
  */
 public class DragRecyclerView extends DataBindingRecyclerView<DragRecyclerViewAdapter> implements ItemDragCallBack {
     private ItemDragCallBack callback;

@@ -9,7 +9,7 @@ import com.wuhenzhizao.view.ui.DragActivity;
 import com.wuhenzhizao.view.ui.StickyActivity;
 
 /**
- * Created by liufei on 2017/9/13.
+ * Created by wuhenzhizao on 2017/9/13.
  */
 
 public class MainViewModel extends LifecycleViewModel {

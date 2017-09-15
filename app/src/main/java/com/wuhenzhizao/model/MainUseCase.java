@@ -3,7 +3,7 @@ package com.wuhenzhizao.model;
 import com.gomeos.mvvm.model.UseCase;
 
 /**
- * Created by liufei on 2017/9/13.
+ * Created by wuhenzhizao on 2017/9/13.
  */
 
 public class MainUseCase extends UseCase {

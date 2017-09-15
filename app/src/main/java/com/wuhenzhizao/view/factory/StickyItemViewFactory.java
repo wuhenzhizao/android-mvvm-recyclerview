@@ -16,7 +16,7 @@ import com.wuhenzhizao.viewmodule.StickyMenuItemViewModel;
 import com.wuhenzhizao.viewmodule.viewbean.StickyItemViewBean;
 
 /**
- * Created by liufei on 2017/9/14.
+ * Created by wuhenzhizao on 2017/9/14.
  */
 
 public class StickyItemViewFactory extends StickyViewFactory<StickyViewBean> {

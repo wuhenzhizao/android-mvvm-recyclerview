@@ -7,7 +7,7 @@ import java.util.Collections;
 import com.wuhenzhizao.factory.AbsViewFactory;
 
 /**
- * Created by liufei on 2017/9/12.
+ * Created by wuhenzhizao on 2017/9/12.
  */
 
 public class DragRecyclerViewAdapter extends ViewModelRecyclerViewAdapter<AbsViewFactory> {

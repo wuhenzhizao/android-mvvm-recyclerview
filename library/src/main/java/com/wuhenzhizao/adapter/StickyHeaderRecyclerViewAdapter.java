@@ -9,7 +9,7 @@ import com.wuhenzhizao.viewbean.StickyViewBean;
 import com.wuhenzhizao.viewholder.DefaultViewHolder;
 
 /**
- * Created by liufei on 2017/9/11.
+ * Created by wuhenzhizao on 2017/9/11.
  */
 public class StickyHeaderRecyclerViewAdapter extends ViewModelRecyclerViewAdapter<StickyViewFactory> implements StickyHeaderAdapter<DefaultViewHolder> {
 

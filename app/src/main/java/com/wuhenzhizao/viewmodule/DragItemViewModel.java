@@ -4,7 +4,7 @@ import com.gomeos.mvvm.viewmodel.RecyclerItemViewModel;
 import com.wuhenzhizao.viewmodule.viewbean.DragViewBean;
 
 /**
- * Created by liufei on 2017/9/13.
+ * Created by wuhenzhizao on 2017/9/13.
  */
 
 public class DragItemViewModel extends RecyclerItemViewModel<DragViewBean> {

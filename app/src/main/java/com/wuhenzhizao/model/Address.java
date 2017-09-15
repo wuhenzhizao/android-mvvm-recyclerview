@@ -1,7 +1,7 @@
 package com.wuhenzhizao.model;
 
 /**
- * Created by liufei on 2017/9/14.
+ * Created by wuhenzhizao on 2017/9/14.
  */
 
 public class Address {

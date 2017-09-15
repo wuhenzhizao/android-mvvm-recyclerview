@@ -14,7 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by liufei on 2017/9/13.
+ * Created by wuhenzhizao on 2017/9/13.
  */
 
 public class DragViewModel extends LifecycleViewModel {

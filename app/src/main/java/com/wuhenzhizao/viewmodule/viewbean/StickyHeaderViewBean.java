@@ -3,7 +3,7 @@ package com.wuhenzhizao.viewmodule.viewbean;
 import com.wuhenzhizao.viewbean.StickyViewBean;
 
 /**
- * Created by liufei on 2017/9/14.
+ * Created by wuhenzhizao on 2017/9/14.
  */
 
 public class StickyHeaderViewBean extends StickyViewBean {

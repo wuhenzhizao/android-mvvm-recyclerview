@@ -17,7 +17,7 @@ import com.wuhenzhizao.databinding.ActivityDragBinding;
 import com.wuhenzhizao.viewmodule.DragViewModel;
 
 /**
- * Created by liufei on 2017/9/13.
+ * Created by wuhenzhizao on 2017/9/13.
  */
 
 public class DragActivity extends BaseActivity {

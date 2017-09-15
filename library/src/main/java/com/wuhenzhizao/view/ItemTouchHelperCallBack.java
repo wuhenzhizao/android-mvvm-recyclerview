@@ -6,7 +6,7 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import com.wuhenzhizao.callback.ItemDragCallBack;
 
 /**
- * Created by liufei on 2017/9/12.
+ * Created by wuhenzhizao on 2017/9/12.
  */
 class ItemTouchHelperCallBack extends ItemTouchHelper.Callback {
     private ItemDragCallBack callBack;

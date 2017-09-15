@@ -1,7 +1,7 @@
 package com.wuhenzhizao.viewbean;
 
 /**
- * Created by liufei on 2017/9/11.
+ * Created by wuhenzhizao on 2017/9/11.
  */
 
 public class StickyViewBean {

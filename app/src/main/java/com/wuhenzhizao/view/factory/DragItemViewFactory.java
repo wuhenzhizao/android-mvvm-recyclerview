@@ -12,7 +12,7 @@ import com.wuhenzhizao.viewmodule.DragItemViewModel;
 import com.wuhenzhizao.viewmodule.viewbean.DragViewBean;
 
 /**
- * Created by liufei on 2017/9/13.
+ * Created by wuhenzhizao on 2017/9/13.
  */
 
 public class DragItemViewFactory extends AbsViewFactory<DragViewBean> {

@@ -12,7 +12,7 @@ import com.wuhenzhizao.databinding.ActivityStickyBinding;
 import com.wuhenzhizao.viewmodule.StickyViewModel;
 
 /**
- * Created by liufei on 2017/9/13.
+ * Created by wuhenzhizao on 2017/9/13.
  */
 
 public class StickyActivity extends BaseActivity {
