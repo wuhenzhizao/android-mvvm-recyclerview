@@ -10,10 +10,8 @@
 ## 预览图  
 
 <div style="float:left;border:solid 1px 000;margin:2px;">
-	<img src="http://img.blog.csdn.net/20160616131539493" alt="screenshot" title="screenshot" width="250" height="436" ></div>
-<div style="float:left;border:solid 1px 000;margin:2px;">
+	<img src="http://img.blog.csdn.net/20160616131539493" alt="screenshot" title="screenshot" width="250" height="436" >
 	<img src="http://img.blog.csdn.net/20160616131603337" alt="screenshot" title="screenshot" width="250" height="436" ></div>
-<div style="clear:both;"></div>
 
 <figure class="half">
     <a href="screenshots/20170917_155444.gif"><img src="screenshots/20170917_155444.gif" width = "350"></a>
