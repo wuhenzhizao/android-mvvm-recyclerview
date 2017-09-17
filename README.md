@@ -8,7 +8,7 @@
  - Drag 效果；
 
 # Demo  
-[Download Demo](https://www.pgyer.com/ebTo)
+[Demo下载](https://www.pgyer.com/ebTo)
 
 - StickyHeaderRecyclerView 
 <div style="float:left;border:solid 1px 000;margin:5px;">
