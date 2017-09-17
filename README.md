@@ -161,4 +161,4 @@ public ItemDragCallBack getDragCallBack(){
 # Thanks
 - [AndroidMVVM](https://github.com/gomeos/AndroidMVVM)
 - [AndroidSwipeLayout](https://github.com/daimajia/AndroidSwipeLayout)
-- [sticky-headers-recyclerview](https://github.com/timehop/sticky-headers-recyclerview)
+- [header-decor](https://github.com/edubarr/header-decor)
