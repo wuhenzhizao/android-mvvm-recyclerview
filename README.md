@@ -32,7 +32,7 @@
 
 # Usage
   
-**本项目基于MVVM架构，使用了[android-mvvm-framwork](https://github.com/wuhenzhizao/android-mvvm-framwork)框架，mvvm部分代码请参考该框架，下面主要讲RecyclerViwe部分的用法** 
+**本项目基于MVVM架构，使用了[android-mvvm-framwork](https://github.com/wuhenzhizao/android-mvvm-framwork)框架，mvvm部分代码请参考该框架，下面主要讲RecyclerView部分的用法** 
 
 [StickyHeaderRecyclerView](library/src/main/java/com/wuhenzhizao/view/StickyHeaderRecyclerView.java)
 ========================  
