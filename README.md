@@ -12,21 +12,21 @@
 
 - StickyHeaderRecyclerView 
 <div style="float:left;border:solid 1px 000;margin:5px;">
-	<img src="screenshots/20170917_155444.gif" alt="screenshot" title="singleType" width="250">
-	<img src="screenshots/20170917_155550.gif" alt="screenshot" title="multiType" width="250">
+	<img src="screenshots/20170917_155444.gif" alt="screenshot" title="singleType" width="300">
+	<img src="screenshots/20170917_155550.gif" alt="screenshot" title="multiType" width="300">
 </div>
 <div style="clear:both;"></div>
 
 - SwipeMenuRecyclerView  
 <div style="float:left;border:solid 1px 000;margin:5px;">
-	<img src="screenshots/20170917_155618.gif" alt="screenshot" title="swipeMenuLeft" width="250">
-	<img src="screenshots/20170917_155634.gif" alt="screenshot" title="swipeMenuRight" width="250">
+	<img src="screenshots/20170917_155618.gif" alt="screenshot" title="swipeMenuLeft" width="300">
+	<img src="screenshots/20170917_155634.gif" alt="screenshot" title="swipeMenuRight" width="300">
 </div>
 <div style="clear:both;"></div>  
 
 - DragRecyclerView
 <div style="float:left;border:solid 1px 000;margin:5px;">
-	<img src="screenshots/20170917_155648.gif" alt="screenshot" title="drag" width="250">
+	<img src="screenshots/20170917_155648.gif" alt="screenshot" title="drag" width="300">
 </div>
 <div style="clear:both;"></div>  
 
