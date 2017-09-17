@@ -7,25 +7,19 @@
  - Swipe Menu效果：横向滑动菜单，支持左右滑动两种操作；
  - Drag 效果；
 
-## 预览图  
+# Demo  
 
-<div style="float:left;border:solid 1px 000;margin:2px;">
-	<img src="http://img.blog.csdn.net/20160616131539493" alt="screenshot" title="screenshot" width="250" height="436" >
-	<img src="http://img.blog.csdn.net/20160616131603337" alt="screenshot" title="screenshot" width="250" height="436" ></div>
+<div style="float:left;border:solid 1px 000;margin:5px;">
+	<img src="screenshots/20170917_155444.gif" alt="screenshot" title="singleType" width="350">
+	<img src="screenshots/20170917_155550.gif" alt="screenshot" title="multiType" width="350">
+</div>
 
-<figure class="half">
-    <a href="screenshots/20170917_155444.gif"><img src="screenshots/20170917_155444.gif" width = "350"></a>
-    <a href="screenshots/20170917_155550.gif"><img src="screenshots/20170917_155550.gif" width = "350"></a>
-</figure>  
+<div style="float:left;border:solid 1px 000;margin:5px;">
+	<img src="screenshots/20170917_155618.gif" alt="screenshot" title="swipeMenuLeft" width="350">
+	<img src="screenshots/20170917_155634.gif" alt="screenshot" title="swipeMenuRight" width="350">
+</div>
 
-
-<figure class="half">
-    <a href="screenshots/20170917_155618.gif"><img src="screenshots/20170917_155618.gif" width = "350"></a>
-    <a href="screenshots/20170917_155634.gif"><img src="screenshots/20170917_155634.gif" width = "350"></a>
-</figure>  
-
-
-<figure class="half">
-    <a href="screenshots/20170917_155634.gif"><img src="screenshots/20170917_155634.gif" width = "350"></a>
-</figure>
+<div style="float:left;border:solid 1px 000;margin:5px;">
+	<img src="screenshots/20170917_155648.gif" alt="screenshot" title="drag" width="350">
+</div>
 
