@@ -7,7 +7,7 @@ import com.gomeos.mvvm.viewmodel.command.OnClickCommand;
 import com.wuhenzhizao.viewmodule.viewbean.SwipeRightViewBean;
 
 /**
- * Created by liufei on 2017/9/15.
+ * Created by wuhenzhizao on 2017/9/15.
  */
 
 public class SwipeRightItemViewModel extends RecyclerItemViewModel<SwipeRightViewBean> {

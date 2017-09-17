@@ -13,7 +13,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by liufei on 2017/9/15.
+ * Created by wuhenzhizao on 2017/9/15.
  */
 
 public class SwipeViewModel extends LifecycleViewModel {
