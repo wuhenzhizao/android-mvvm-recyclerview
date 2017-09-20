@@ -1,4 +1,4 @@
-# MVVM-Recyclerview
+# Easy-MVVM-Recyclerview
 基于MVVM架构的RecyclerView，更少的代码，更低的耦合性
 
 支持的功能
