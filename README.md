@@ -153,8 +153,8 @@ public ItemDragCallBack getDragCallBack(){
 
 # TODO
 
-- [*] 代码重构以实现更良好的封装
-- [*] 增加对下拉刷新，加载更多的支持
+- [x] 代码重构以实现更良好的封装
+- [x] 增加对下拉刷新，加载更多的支持
 - [ ] 增加更多的效果：fast index、expadable等
 
 
