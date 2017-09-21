@@ -3,6 +3,7 @@ package com.wuhenzhizao.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.databinding.BindingAdapter;
+import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 
 import com.gomeos.mvvm.view.LayoutManagers;
@@ -27,13 +28,9 @@ public class AdvancedRefreshLayout extends SmartRefreshLayout implements DataBin
 
     private String refreshHeaderClass = ClassicsHeader.class.getName();
     private String refreshFooterClass = ClassicsFooter.class.getName();
-    private boolean canRefresh = true;
-    private boolean canLoadMore = false;
-    private boolean autoLoadMore = false;
-    private boolean overScrollBounce = true;
     private int mode;
 
-    public static final int MODE_NONE = 0;       // 无Recyclerview，内部为普通布局
+    public static final int MODE_NONE = 0;       // 无RecyclerView，内部为普通布局
     public static final int MODE_DEFAULT = 1;    // DefaultRecyclerView
     public static final int MODE_STICKY = 2;     // StickyHeaderRecyclerView
     public static final int MODE_SWIPE = 3;      // SwipeMenuRecyclerView
@@ -60,10 +57,6 @@ public class AdvancedRefreshLayout extends SmartRefreshLayout implements DataBin
             if (ta.hasValue(R.styleable.AdvancedRefreshLayout_refreshFooterClass)) {
                 refreshFooterClass = ta.getString(R.styleable.AdvancedRefreshLayout_refreshFooterClass);
             }
-            canRefresh = ta.getBoolean(R.styleable.AdvancedRefreshLayout_enableRefresh, true);
-            canLoadMore = ta.getBoolean(R.styleable.AdvancedRefreshLayout_enableLoadMore, false);
-            autoLoadMore = ta.getBoolean(R.styleable.AdvancedRefreshLayout_enableAutoLoadMore, false);
-            overScrollBounce = ta.getBoolean(R.styleable.AdvancedRefreshLayout_enableOverScrollBounce, true);
             mode = ta.getInt(R.styleable.AdvancedRefreshLayout_contentMode, MODE_NONE);
             ta.recycle();
         }
@@ -75,14 +68,9 @@ public class AdvancedRefreshLayout extends SmartRefreshLayout implements DataBin
             setEnableLoadmore(false);
             setEnableAutoLoadmore(false);
             setEnablePureScrollMode(true);
-            setEnableOverScrollBounce(overScrollBounce);
+            setEnableOverScrollBounce(true);
             return;
         }
-        setEnableRefresh(canRefresh);
-        setEnableLoadmore(canLoadMore);
-        setEnableAutoLoadmore(autoLoadMore);
-        setEnableOverScrollBounce(overScrollBounce);
-
         initHeader(context, attrs, defStyleAttr);
         initFooter(context, attrs, defStyleAttr);
         initContent(context, attrs, defStyleAttr);
@@ -150,6 +138,10 @@ public class AdvancedRefreshLayout extends SmartRefreshLayout implements DataBin
         mRefreshContent = new RefreshContentWrapper(recyclerView);
     }
 
+    public BaseRecyclerView getRecyclerView() {
+        return recyclerView;
+    }
+
     @Override
     public void setItemViewFactory(String className) {
         recyclerView.setItemViewFactory(className);
@@ -172,15 +164,21 @@ public class AdvancedRefreshLayout extends SmartRefreshLayout implements DataBin
         layout.setOnRefreshLoadmoreListener(proxy.getRefreshOrLoadMoreListener());
         layout.setOnMultiPurposeListener(proxy.getMultiChangedListener());
         layout.setEnableRefresh(proxy.isEnableRefresh());
-        layout.setEnableLoadmore(proxy.isEnableLoadmore());
-        layout.setEnableAutoLoadmore(proxy.isEnableAutoLoadmore());
+        layout.setEnableLoadmore(proxy.isEnableLoadMore());
+        layout.setEnableAutoLoadmore(proxy.isEnableAutoLoadMore());
         layout.setEnableHeaderTranslationContent(proxy.isEnableHeaderTranslationContent());
         layout.setEnableFooterTranslationContent(proxy.isEnableFooterTranslationContent());
         layout.setEnableOverScrollBounce(proxy.isEnableOverScrollBounce());
-        layout.setEnablePureScrollMode(proxy.isEnablePureScrollMode());
         layout.setEnableScrollContentWhenLoaded(proxy.isEnableScrollContentWhenLoaded());
-        layout.setEnableLoadmoreWhenContentNotFull(proxy.isEnableLoadmoreWhenContentNotFull());
+        layout.setEnableLoadmoreWhenContentNotFull(proxy.isEnableLoadMoreWhenContentNotFull());
         layout.setDisableContentWhenRefresh(proxy.isDisableContentWhenRefresh());
         layout.setDisableContentWhenLoading(proxy.isDisableContentWhenLoading());
+
+        RecyclerView recyclerView = layout.getRecyclerView();
+        if (recyclerView instanceof DragRecyclerView) {
+            ((DragRecyclerView) recyclerView).setDragListener(proxy.getItemDragListener());
+        } else if (recyclerView instanceof StickyHeaderRecyclerView) {
+            ((StickyHeaderRecyclerView) recyclerView).setHeaderClickListener(proxy.getItemHeaderClickListener());
+        }
     }
 }

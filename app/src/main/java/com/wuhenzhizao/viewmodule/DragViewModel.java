@@ -5,7 +5,8 @@ import android.os.Bundle;
 
 import com.gomeos.mvvm.viewmodel.LifecycleViewModel;
 import com.wuhenzhizao.R;
-import com.wuhenzhizao.callback.OnItemDragListener;
+import com.wuhenzhizao.api.OnItemDragListener;
+import com.wuhenzhizao.view.RefreshLayoutProxy;
 import com.wuhenzhizao.viewmodule.viewbean.DragViewBean;
 
 import java.util.Arrays;
@@ -18,23 +19,28 @@ import java.util.List;
  */
 
 public class DragViewModel extends LifecycleViewModel {
+    private RefreshLayoutProxy proxy;
     private List<DragViewBean> itemList;
 
     public List<DragViewBean> getItemList() {
         return itemList;
     }
 
-    public OnItemDragListener getDragCallBack(){
-        return new OnItemDragListener() {
-            @Override
-            public void onDrag(int fromPositon, int toPosition) {
-                Collections.swap(itemList, fromPositon, toPosition);
-            }
-        };
+    public RefreshLayoutProxy getProxy() {
+        return proxy;
     }
 
     @Override
     protected void onCreate(Bundle bundle) {
+        proxy = new RefreshLayoutProxy();
+        proxy.setEnableLoadMore(true);
+        proxy.setItemDragListener(new OnItemDragListener() {
+            @Override
+            public void onDrag(int fromPosition, int toPosition) {
+                Collections.swap(itemList, fromPosition, toPosition);
+            }
+        });
+
         itemList = new LinkedList<>();
         Resources resources = getContext().getResources();
         List<String> nameList = Arrays.asList(resources.getStringArray(R.array.drag_names));

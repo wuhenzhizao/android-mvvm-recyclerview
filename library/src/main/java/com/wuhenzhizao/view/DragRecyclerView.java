@@ -7,13 +7,13 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.AttributeSet;
 
 import com.wuhenzhizao.adapter.DragRecyclerViewAdapter;
-import com.wuhenzhizao.callback.OnItemDragListener;
+import com.wuhenzhizao.api.OnItemDragListener;
 
 /**
  * Created by wuhenzhizao on 2017/9/12.
  */
 public class DragRecyclerView extends BaseRecyclerView<DragRecyclerViewAdapter> implements OnItemDragListener {
-    private OnItemDragListener callback;
+    private OnItemDragListener dragListener;
 
     public DragRecyclerView(Context context) {
         super(context);
@@ -37,16 +37,16 @@ public class DragRecyclerView extends BaseRecyclerView<DragRecyclerViewAdapter> 
         helper.attachToRecyclerView(this);
     }
 
-    public void setCallback(OnItemDragListener callback) {
-        this.callback = callback;
+    public void setDragListener(OnItemDragListener dragListener) {
+        this.dragListener = dragListener;
     }
 
     @Override
     public void onDrag(int fromPosition, int toPosition) {
         // 更新数据
         adapter.onItemMoved(fromPosition, toPosition);
-        if (callback != null) {
-            callback.onDrag(fromPosition, toPosition);
+        if (dragListener != null) {
+            dragListener.onDrag(fromPosition, toPosition);
         }
     }
 
@@ -79,13 +79,15 @@ public class DragRecyclerView extends BaseRecyclerView<DragRecyclerViewAdapter> 
             if (viewHolder.getItemViewType() != target.getItemViewType()) {
                 return false;
             }
+            // 解决滑动冲突问题
+            getParent().requestDisallowInterceptTouchEvent(true);
             callBack.onDrag(viewHolder.getAdapterPosition(), target.getAdapterPosition());
             return true;
         }
 
         @Override
         public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-
+            getParent().requestDisallowInterceptTouchEvent(false);
         }
     }
 

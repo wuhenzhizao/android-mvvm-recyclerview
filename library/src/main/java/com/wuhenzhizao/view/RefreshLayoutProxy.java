@@ -1,30 +1,49 @@
 package com.wuhenzhizao.view;
 
-import com.wuhenzhizao.callback.OnLoadMoreListener;
-import com.wuhenzhizao.callback.OnMultiChangedListener;
-import com.wuhenzhizao.callback.OnPullRefreshListener;
-import com.wuhenzhizao.callback.OnRefreshOrLoadMoreListener;
+import com.wuhenzhizao.api.OnItemDragListener;
+import com.wuhenzhizao.api.OnItemHeaderClickListener;
+import com.wuhenzhizao.api.OnLoadMoreListener;
+import com.wuhenzhizao.api.OnMultiChangedListener;
+import com.wuhenzhizao.api.OnPullRefreshListener;
+import com.wuhenzhizao.api.OnRefreshOrLoadMoreListener;
 
 /**
  * Created by liufei on 2017/9/21.
  */
 
 public class RefreshLayoutProxy {
+    private OnItemDragListener itemDragListener;
+    private OnItemHeaderClickListener itemHeaderClickListener;
     private OnPullRefreshListener pullRefreshListener;
     private OnLoadMoreListener loadMoreListener;
     private OnRefreshOrLoadMoreListener refreshOrLoadMoreListener;
     private OnMultiChangedListener multiChangedListener;
     private boolean enableRefresh = true;
-    private boolean enableLoadmore = false;
+    private boolean enableLoadMore = false;
     private boolean enableHeaderTranslationContent = true;    //是否启用内容视图拖动效果
     private boolean enableFooterTranslationContent = true;    //是否启用内容视图拖动效果
     private boolean enableOverScrollBounce = true;            //是否启用越界回弹
-    private boolean enableAutoLoadmore = true;                //是否在列表滚动到底部时自动加载更多
-    private boolean enablePureScrollMode = false;             //是否开启纯滚动模式
+    private boolean enableAutoLoadMore = true;                //是否在列表滚动到底部时自动加载更多
     private boolean enableScrollContentWhenLoaded = true;     //是否在加载更多完成之后滚动内容显示新数据
-    private boolean enableLoadmoreWhenContentNotFull = false; //在内容不满一页的时候，是否可以上拉加载更多
+    private boolean enableLoadMoreWhenContentNotFull = false; //在内容不满一页的时候，是否可以上拉加载更多
     private boolean disableContentWhenRefresh = false;        //是否开启在刷新时候禁止操作内容视图
     private boolean disableContentWhenLoading = false;        //是否开启在刷新时候禁止操作内容视图
+
+    public OnItemDragListener getItemDragListener() {
+        return itemDragListener;
+    }
+
+    public void setItemDragListener(OnItemDragListener itemDragListener) {
+        this.itemDragListener = itemDragListener;
+    }
+
+    public OnItemHeaderClickListener getItemHeaderClickListener() {
+        return itemHeaderClickListener;
+    }
+
+    public void setItemHeaderClickListener(OnItemHeaderClickListener itemHeaderClickListener) {
+        this.itemHeaderClickListener = itemHeaderClickListener;
+    }
 
     public OnPullRefreshListener getPullRefreshListener() {
         return pullRefreshListener;
@@ -66,12 +85,12 @@ public class RefreshLayoutProxy {
         this.enableRefresh = enableRefresh;
     }
 
-    public boolean isEnableLoadmore() {
-        return enableLoadmore;
+    public boolean isEnableLoadMore() {
+        return enableLoadMore;
     }
 
-    public void setEnableLoadmore(boolean enableLoadmore) {
-        this.enableLoadmore = enableLoadmore;
+    public void setEnableLoadMore(boolean enableLoadMore) {
+        this.enableLoadMore = enableLoadMore;
     }
 
     public boolean isEnableHeaderTranslationContent() {
@@ -98,20 +117,12 @@ public class RefreshLayoutProxy {
         this.enableOverScrollBounce = enableOverScrollBounce;
     }
 
-    public boolean isEnableAutoLoadmore() {
-        return enableAutoLoadmore;
+    public boolean isEnableAutoLoadMore() {
+        return enableAutoLoadMore;
     }
 
-    public void setEnableAutoLoadmore(boolean enableAutoLoadmore) {
-        this.enableAutoLoadmore = enableAutoLoadmore;
-    }
-
-    public boolean isEnablePureScrollMode() {
-        return enablePureScrollMode;
-    }
-
-    public void setEnablePureScrollMode(boolean enablePureScrollMode) {
-        this.enablePureScrollMode = enablePureScrollMode;
+    public void setEnableAutoLoadMore(boolean enableAutoLoadMore) {
+        this.enableAutoLoadMore = enableAutoLoadMore;
     }
 
     public boolean isEnableScrollContentWhenLoaded() {
@@ -122,12 +133,12 @@ public class RefreshLayoutProxy {
         this.enableScrollContentWhenLoaded = enableScrollContentWhenLoaded;
     }
 
-    public boolean isEnableLoadmoreWhenContentNotFull() {
-        return enableLoadmoreWhenContentNotFull;
+    public boolean isEnableLoadMoreWhenContentNotFull() {
+        return enableLoadMoreWhenContentNotFull;
     }
 
-    public void setEnableLoadmoreWhenContentNotFull(boolean enableLoadmoreWhenContentNotFull) {
-        this.enableLoadmoreWhenContentNotFull = enableLoadmoreWhenContentNotFull;
+    public void setEnableLoadMoreWhenContentNotFull(boolean enableLoadMoreWhenContentNotFull) {
+        this.enableLoadMoreWhenContentNotFull = enableLoadMoreWhenContentNotFull;
     }
 
     public boolean isDisableContentWhenRefresh() {

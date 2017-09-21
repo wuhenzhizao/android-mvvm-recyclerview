@@ -30,7 +30,6 @@
             android:layout_height="match_parent"
             android:layout_below="@id/toolbar"
             sticky:contentMode="swipeRecyclerView"
-            sticky:enableLoadMore="true"
             sticky:itemViewFactory="@{SwipeItemViewFactory.className}"
             sticky:items="@{vm.itemList}"
             sticky:layoutManager="@{LayoutManagers.linear()}"

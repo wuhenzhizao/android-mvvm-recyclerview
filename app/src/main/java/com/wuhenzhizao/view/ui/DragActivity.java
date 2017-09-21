@@ -1,13 +1,8 @@
 package com.wuhenzhizao.view.ui;
 
-import android.graphics.Canvas;
-import android.graphics.Rect;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
-import android.view.View;
 
-import com.gomeos.mvvm.utils.ScreenUtils;
 import com.gomeos.mvvm.view.DataBindingFactory;
 import com.gomeos.mvvm.view.ui.BaseActivity;
 import com.gomeos.mvvm.viewmodel.ViewModelFactory;

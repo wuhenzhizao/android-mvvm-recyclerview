@@ -1,20 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="DragRecyclerView">
-        <attr name="callback" format="reference" />
-    </declare-styleable>
-
-    <declare-styleable name="StickHeaderRecyclerView">
-        <attr name="headerClickListener" format="reference" />
-    </declare-styleable>
-
     <declare-styleable name="AdvancedRefreshLayout">
         <attr name="refreshHeaderClass" format="string" />
         <attr name="refreshFooterClass" format="string" />
-        <attr name="enableRefresh" format="boolean" />
-        <attr name="enableLoadMore" format="boolean" />
-        <attr name="enableAutoLoadMore" format="boolean" />
-        <attr name="enableOverScrollBounce" format="boolean" />
         <attr name="contentMode" format="enum">
             <enum name="none" value="0" />
             <enum name="defaultRecyclerView" value="1" />

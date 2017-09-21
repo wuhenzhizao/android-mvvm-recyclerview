@@ -25,12 +25,13 @@
             android:background="@color/colorPrimaryDark"
             android:elevation="10dp" />
 
-        <com.wuhenzhizao.view.DragRecyclerView xmlns:drag="http://schemas.android.com/apk/res-auto"
+        <com.wuhenzhizao.view.AdvancedRefreshLayout xmlns:drag="http://schemas.android.com/apk/res-auto"
             android:id="@+id/drv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/toolbar"
-            drag:callback="@{vm.dragCallBack}"
+            drag:contentMode="dragRecyclerView"
+            drag:proxy="@{vm.proxy}"
             drag:itemViewFactory="@{DragItemViewFactory.className}"
             drag:items="@{vm.itemList}"
             drag:layoutManager="@{LayoutManagers.linear()}" />

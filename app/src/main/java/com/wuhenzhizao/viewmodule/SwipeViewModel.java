@@ -18,6 +18,7 @@ import java.util.List;
  */
 
 public class SwipeViewModel extends LifecycleViewModel {
+    private RefreshLayoutProxy proxy;
     private List<SwipeBaseViewBean> itemList;
     private int mode;
 
@@ -29,15 +30,15 @@ public class SwipeViewModel extends LifecycleViewModel {
         return itemList;
     }
 
-    public RefreshLayoutProxy getProxy(){
-        RefreshLayoutProxy proxy = new RefreshLayoutProxy();
-        proxy.setEnableLoadmore(true);
+    public RefreshLayoutProxy getProxy() {
         return proxy;
     }
 
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
+        proxy = new RefreshLayoutProxy();
+        proxy.setEnableLoadMore(true);
 
         itemList = new LinkedList<>();
         for (int i = 0; i < Address.provinces.length; i++) {

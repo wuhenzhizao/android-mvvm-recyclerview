@@ -1,4 +1,4 @@
-package com.wuhenzhizao.callback;
+package com.wuhenzhizao.api;
 
 /**
  * Created by wuhenzhizao on 2017/9/12.

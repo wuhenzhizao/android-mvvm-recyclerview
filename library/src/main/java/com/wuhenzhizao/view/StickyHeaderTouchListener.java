@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 /**
  * Created by wuhenzhizao on 2017/9/14.
  */
-class StickyHeaderTouchListener implements RecyclerView.OnItemTouchListener {
+public class StickyHeaderTouchListener implements RecyclerView.OnItemTouchListener {
     private final GestureDetector mTapDetector;
     private final StickyHeaderRecyclerView mRecyclerView;
     private final StickyRecyclerHeadersDecoration mDecor;

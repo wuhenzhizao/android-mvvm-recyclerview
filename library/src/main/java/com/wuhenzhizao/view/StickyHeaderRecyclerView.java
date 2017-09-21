@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.wuhenzhizao.adapter.StickyHeaderRecyclerViewAdapter;
-import com.wuhenzhizao.callback.OnItemHeaderClickListener;
+import com.wuhenzhizao.api.OnItemHeaderClickListener;
 
 /**
  * Created by wuhenzhizao on 2017/3/16.
@@ -46,7 +46,7 @@ public class StickyHeaderRecyclerView extends BaseRecyclerView<StickyHeaderRecyc
     @Override
     public void onHeaderClick(View headerView, View clickView, int position, long headerId) {
         if (listener != null) {
-            listener.onHeaderClick(clickView, position, headerId);
+            listener.onHeaderClick(position, headerId);
         }
     }
 }
