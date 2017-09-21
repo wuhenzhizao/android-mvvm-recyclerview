@@ -6,14 +6,14 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.wuhenzhizao.adapter.StickyHeaderRecyclerViewAdapter;
-import com.wuhenzhizao.callback.ItemHeaderClickListener;
+import com.wuhenzhizao.callback.OnItemHeaderClickListener;
 
 /**
  * Created by wuhenzhizao on 2017/3/16.
  */
-public class StickyHeaderRecyclerView extends DataBindingRecyclerView<StickyHeaderRecyclerViewAdapter> implements StickyHeaderTouchListener.OnHeaderClickListener {
+public class StickyHeaderRecyclerView extends BaseRecyclerView<StickyHeaderRecyclerViewAdapter> implements StickyHeaderTouchListener.OnHeaderClickListener {
     private StickyRecyclerHeadersDecoration decoration;
-    private ItemHeaderClickListener listener;
+    private OnItemHeaderClickListener listener;
 
     public StickyHeaderRecyclerView(Context context) {
         super(context);
@@ -27,7 +27,7 @@ public class StickyHeaderRecyclerView extends DataBindingRecyclerView<StickyHead
         super(context, attrs, defStyle);
     }
 
-    public void setHeaderClickListener(ItemHeaderClickListener listener) {
+    public void setHeaderClickListener(OnItemHeaderClickListener listener) {
         this.listener = listener;
     }
 

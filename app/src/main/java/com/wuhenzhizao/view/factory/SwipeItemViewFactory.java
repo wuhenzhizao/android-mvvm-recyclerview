@@ -35,11 +35,11 @@ public class SwipeItemViewFactory extends AbsViewFactory<SwipeBaseViewBean> {
 
     @Override
     protected ViewDataBinding createViewDataBinding(AbsItemViewModel viewModel) {
-        if (viewModel instanceof SwipeLeftItemViewModel){
+        if (viewModel instanceof SwipeLeftItemViewModel) {
             ItemSwipeLeftBinding leftBinding = inflate(R.layout.item_swipe_left);
             leftBinding.setVm((SwipeLeftItemViewModel) viewModel);
             return leftBinding;
-        } else if (viewModel instanceof SwipeRightItemViewModel){
+        } else if (viewModel instanceof SwipeRightItemViewModel) {
             ItemSwipeRightBinding rightBinding = inflate(R.layout.item_swipe_right);
             rightBinding.setVm((SwipeRightItemViewModel) viewModel);
             return rightBinding;

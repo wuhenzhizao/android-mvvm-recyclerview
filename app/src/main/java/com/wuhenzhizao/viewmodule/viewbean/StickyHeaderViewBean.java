@@ -9,10 +9,6 @@ import com.wuhenzhizao.viewbean.StickyViewBean;
 public class StickyHeaderViewBean extends StickyViewBean {
     private String title;
 
-    public StickyHeaderViewBean(boolean isSticky) {
-        super(isSticky);
-    }
-
     public String getTitle() {
         return title;
     }

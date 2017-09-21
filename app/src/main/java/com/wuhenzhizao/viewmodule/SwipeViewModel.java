@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.gomeos.mvvm.viewmodel.LifecycleViewModel;
 import com.wuhenzhizao.model.Address;
+import com.wuhenzhizao.view.RefreshLayoutProxy;
 import com.wuhenzhizao.view.ui.SwipeMenuActivity;
 import com.wuhenzhizao.viewmodule.viewbean.SwipeBaseViewBean;
 import com.wuhenzhizao.viewmodule.viewbean.SwipeLeftViewBean;
@@ -28,14 +29,20 @@ public class SwipeViewModel extends LifecycleViewModel {
         return itemList;
     }
 
+    public RefreshLayoutProxy getProxy(){
+        RefreshLayoutProxy proxy = new RefreshLayoutProxy();
+        proxy.setEnableLoadmore(true);
+        return proxy;
+    }
+
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
 
         itemList = new LinkedList<>();
-        for (int i = 0; i < Address.provinces.length; i++){
+        for (int i = 0; i < Address.provinces.length; i++) {
             SwipeBaseViewBean viewBean;
-            if (mode == SwipeMenuActivity.RIGHT){
+            if (mode == SwipeMenuActivity.RIGHT) {
                 viewBean = new SwipeRightViewBean();
             } else {
                 viewBean = new SwipeLeftViewBean();

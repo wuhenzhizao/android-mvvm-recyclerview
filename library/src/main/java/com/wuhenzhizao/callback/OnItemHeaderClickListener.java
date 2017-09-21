@@ -6,7 +6,7 @@ import android.view.View;
  * Created by wuhenzhizao on 2017/9/14.
  */
 
-public interface ItemHeaderClickListener {
+public interface OnItemHeaderClickListener {
     /**
      *
      * @param clickView

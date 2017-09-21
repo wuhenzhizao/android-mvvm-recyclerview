@@ -6,15 +6,11 @@ import com.wuhenzhizao.viewbean.StickyViewBean;
  * Created by wuhenzhizao on 2017/9/14.
  */
 
-public class StickyTestViewBean extends com.wuhenzhizao.viewbean.StickyViewBean {
+public class StickyTestViewBean extends StickyViewBean {
     private String title;
     private String name;
     private int stickyTheme;
     private boolean collect;
-
-    public StickyTestViewBean(boolean isSticky) {
-        super(isSticky);
-    }
 
     public String getTitle() {
         return title;

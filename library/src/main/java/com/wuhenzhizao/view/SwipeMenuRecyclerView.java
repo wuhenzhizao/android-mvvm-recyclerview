@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by wuhenzhizao on 2017/9/11.
  */
-public class SwipeMenuRecyclerView extends DataBindingRecyclerView<SwipeMenuRecyclerViewAdapter> {
+public class SwipeMenuRecyclerView extends BaseRecyclerView<SwipeMenuRecyclerViewAdapter> {
     private SwipeLayout oldSwipeLayout;
     private boolean isClosing = false;
     private int mOldTouchedPosition = INVALID_POSITION;
@@ -147,6 +147,6 @@ public class SwipeMenuRecyclerView extends DataBindingRecyclerView<SwipeMenuRecy
             public void run() {
                 isClosing = false;
             }
-        }, 1000);
+        }, 500);
     }
 }

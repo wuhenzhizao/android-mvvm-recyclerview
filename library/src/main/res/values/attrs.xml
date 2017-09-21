@@ -7,4 +7,21 @@
     <declare-styleable name="StickHeaderRecyclerView">
         <attr name="headerClickListener" format="reference" />
     </declare-styleable>
+
+    <declare-styleable name="AdvancedRefreshLayout">
+        <attr name="refreshHeaderClass" format="string" />
+        <attr name="refreshFooterClass" format="string" />
+        <attr name="enableRefresh" format="boolean" />
+        <attr name="enableLoadMore" format="boolean" />
+        <attr name="enableAutoLoadMore" format="boolean" />
+        <attr name="enableOverScrollBounce" format="boolean" />
+        <attr name="contentMode" format="enum">
+            <enum name="none" value="0" />
+            <enum name="defaultRecyclerView" value="1" />
+            <enum name="stickyRecyclerView" value="2" />
+            <enum name="swipeRecyclerView" value="3" />
+            <enum name="dragRecyclerView" value="4" />
+        </attr>
+        <attr name="proxy" format="reference" />
+    </declare-styleable>
 </resources>

@@ -25,13 +25,15 @@
             android:background="@color/colorPrimaryDark"
             android:elevation="10dp" />
 
-        <com.wuhenzhizao.view.SwipeMenuRecyclerView xmlns:sticky="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/drv"
+        <com.wuhenzhizao.view.AdvancedRefreshLayout xmlns:sticky="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/toolbar"
+            sticky:contentMode="swipeRecyclerView"
+            sticky:enableLoadMore="true"
             sticky:itemViewFactory="@{SwipeItemViewFactory.className}"
             sticky:items="@{vm.itemList}"
-            sticky:layoutManager="@{LayoutManagers.linear()}" />
+            sticky:layoutManager="@{LayoutManagers.linear()}"
+            sticky:proxy="@{vm.proxy}" />
     </RelativeLayout>
 </layout>

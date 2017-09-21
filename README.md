@@ -153,8 +153,8 @@ public ItemDragCallBack getDragCallBack(){
 
 # TODO
 
-- [ ] 代码重构以实现更良好的封装
-- [ ] 增加对下拉刷新，加载更多的支持
+- [*] 代码重构以实现更良好的封装
+- [*] 增加对下拉刷新，加载更多的支持
 - [ ] 增加更多的效果：fast index、expadable等
 
 
@@ -162,3 +162,4 @@ public ItemDragCallBack getDragCallBack(){
 - [AndroidMVVM](https://github.com/gomeos/AndroidMVVM)
 - [AndroidSwipeLayout](https://github.com/daimajia/AndroidSwipeLayout)
 - [header-decor](https://github.com/edubarr/header-decor)
+- [SmartRefreshLayout](https://github.com/scwang90/SmartRefreshLayout)

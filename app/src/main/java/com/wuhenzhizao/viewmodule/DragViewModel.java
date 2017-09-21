@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.gomeos.mvvm.viewmodel.LifecycleViewModel;
 import com.wuhenzhizao.R;
-import com.wuhenzhizao.callback.ItemDragCallBack;
+import com.wuhenzhizao.callback.OnItemDragListener;
 import com.wuhenzhizao.viewmodule.viewbean.DragViewBean;
 
 import java.util.Arrays;
@@ -24,8 +24,8 @@ public class DragViewModel extends LifecycleViewModel {
         return itemList;
     }
 
-    public ItemDragCallBack getDragCallBack(){
-        return new ItemDragCallBack() {
+    public OnItemDragListener getDragCallBack(){
+        return new OnItemDragListener() {
             @Override
             public void onDrag(int fromPositon, int toPosition) {
                 Collections.swap(itemList, fromPositon, toPosition);

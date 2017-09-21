@@ -10,31 +10,30 @@ import com.gomeos.mvvm.utils.ObjectUtils;
 import com.gomeos.mvvm.view.LayoutManagers;
 import com.wuhenzhizao.adapter.R;
 import com.wuhenzhizao.adapter.ViewModelRecyclerViewAdapter;
+import com.wuhenzhizao.factory.AbsViewFactory;
 
 import java.util.List;
-
-import com.wuhenzhizao.factory.AbsViewFactory;
 
 /**
  * Created by chenbaocheng on 16/8/14.
  */
-public abstract class DataBindingRecyclerView<RVA extends ViewModelRecyclerViewAdapter> extends RecyclerView {
+public abstract class BaseRecyclerView<RVA extends ViewModelRecyclerViewAdapter> extends RecyclerView implements DataBindingInterface {
     protected RVA adapter;
     protected String itemViewFactory;
     protected boolean isLooped = false;
     protected List items;
 
-    public DataBindingRecyclerView(Context context) {
+    public BaseRecyclerView(Context context) {
         this(context, null);
     }
 
-    public DataBindingRecyclerView(Context context, @Nullable AttributeSet attrs) {
+    public BaseRecyclerView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public DataBindingRecyclerView(Context context, @Nullable AttributeSet attrs, int defStyle) {
+    public BaseRecyclerView(Context context, @Nullable AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-
+        setOverScrollMode(OVER_SCROLL_NEVER);
         initAttributes(context, attrs);
         initSettings();
         setHasFixedSize(true);
@@ -82,7 +81,7 @@ public abstract class DataBindingRecyclerView<RVA extends ViewModelRecyclerViewA
         adapter.putItems(items);
         adapter.notifyDataSetChanged();
         if (isLooped && getLayoutManager() != null) {
-            if (DataBindingRecyclerView.this.items != items) {
+            if (BaseRecyclerView.this.items != items) {
                 int index = (adapter.getItemCount() / 2);
                 index = index - index % items.size();
                 getLayoutManager().scrollToPosition(index);

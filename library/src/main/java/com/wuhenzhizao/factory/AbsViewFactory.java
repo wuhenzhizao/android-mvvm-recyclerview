@@ -11,26 +11,22 @@ import com.gomeos.mvvm.viewmodel.AbsItemViewModel;
 /**
  * Created by chenbaocheng on 16/8/11.
  */
-public abstract class AbsViewFactory<ItemType> implements Factory<ItemType> {
+public abstract class AbsViewFactory<ItemType>{
     private Context context;
 
-    @Override
     public final Class<?> getViewModelClass(ItemType item) {
         return getViewModelType(item);
     }
 
-    @Override
     public final AbsItemViewModel<ItemType> getViewModel(ItemType item) {
         return getViewModel(getViewModelType(item));
     }
 
-    @Override
     public final AbsItemViewModel<ItemType> getViewModel(Class<? extends AbsItemViewModel> type) {
         AbsItemViewModel<ItemType> vm = (AbsItemViewModel<ItemType>) ObjectUtils.newInstance(type);
         return vm;
     }
 
-    @Override
     public final ViewDataBinding getViewDataBinding(AbsItemViewModel<ItemType> viewModel) {
         ViewDataBinding viewDataBinding = createViewDataBinding(viewModel);
         viewModel.setContext(viewDataBinding.getRoot().getContext());

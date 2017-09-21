@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.gomeos.mvvm.viewmodel.LifecycleViewModel;
-import com.wuhenzhizao.callback.ItemHeaderClickListener;
+import com.wuhenzhizao.callback.OnItemHeaderClickListener;
 import com.wuhenzhizao.model.Address;
 import com.wuhenzhizao.view.ui.StickyActivity;
 import com.wuhenzhizao.viewmodule.viewbean.StickyTestViewBean;
@@ -29,8 +29,8 @@ public class StickyViewModel extends LifecycleViewModel {
         return itemList;
     }
 
-    public ItemHeaderClickListener getHeaderClickListener() {
-        return new ItemHeaderClickListener() {
+    public OnItemHeaderClickListener getHeaderClickListener() {
+        return new OnItemHeaderClickListener() {
             @Override
             public void onHeaderClick(View clickView, int position, long headerId) {
                 StickyTestViewBean viewBean = itemList.get(position);
@@ -47,7 +47,7 @@ public class StickyViewModel extends LifecycleViewModel {
         itemList = new LinkedList<>();
         for (int i = 0; i < Address.provinces.length; i++) {
             for (int j = 0; j < Address.citys[i].length; j++) {
-                StickyTestViewBean viewBean = new StickyTestViewBean(true);
+                StickyTestViewBean viewBean = new StickyTestViewBean();
                 viewBean.setHeadId(i + 1);
                 viewBean.setTitle(Address.provinces[i]);
                 viewBean.setName(Address.citys[i][j]);
