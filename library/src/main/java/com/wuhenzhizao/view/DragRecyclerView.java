@@ -79,7 +79,7 @@ public class DragRecyclerView extends BaseRecyclerView<DragRecyclerViewAdapter> 
             if (viewHolder.getItemViewType() != target.getItemViewType()) {
                 return false;
             }
-            // 解决滑动冲突问题
+            // 滑动时，拦截触摸事件
             getParent().requestDisallowInterceptTouchEvent(true);
             callBack.onDrag(viewHolder.getAdapterPosition(), target.getAdapterPosition());
             return true;
@@ -87,6 +87,7 @@ public class DragRecyclerView extends BaseRecyclerView<DragRecyclerViewAdapter> 
 
         @Override
         public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+            // 释放触摸事件
             getParent().requestDisallowInterceptTouchEvent(false);
         }
     }

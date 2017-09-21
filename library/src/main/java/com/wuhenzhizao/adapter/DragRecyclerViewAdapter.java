@@ -2,9 +2,9 @@ package com.wuhenzhizao.adapter;
 
 import android.content.Context;
 
-import java.util.Collections;
-
 import com.wuhenzhizao.factory.AbsViewFactory;
+
+import java.util.Collections;
 
 /**
  * Created by wuhenzhizao on 2017/9/12.
