@@ -89,4 +89,8 @@ public abstract class BaseRecyclerView<RVA extends ViewModelRecyclerViewAdapter>
             this.items = items;
         }
     }
+
+    public void scrollToPosition(int position) {
+        getLayoutManager().scrollToPosition(position);
+    }
 }

@@ -23,7 +23,7 @@ import java.util.List;
 /**
  * Created by liufei on 2017/9/20.
  */
-public class AdvancedRefreshLayout extends SmartRefreshLayout implements DataBindingInterface {
+public class AdvancedRecyclerView extends SmartRefreshLayout implements DataBindingInterface {
     private BaseRecyclerView recyclerView;
 
     private String refreshHeaderClass = ClassicsHeader.class.getName();
@@ -37,28 +37,28 @@ public class AdvancedRefreshLayout extends SmartRefreshLayout implements DataBin
     public static final int MODE_DRAG = 4;       // DragRecyclerView
     public static final int MODE_INDEXABLE = 5;  // DragRecyclerView
 
-    public AdvancedRefreshLayout(Context context, AttributeSet attrs) {
+    public AdvancedRecyclerView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initAttributes(context, attrs);
         initChildView(context, attrs, 0);
     }
 
-    public AdvancedRefreshLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public AdvancedRecyclerView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initAttributes(context, attrs);
         initChildView(context, attrs, defStyleAttr);
     }
 
     private void initAttributes(Context context, AttributeSet attrs) {
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.AdvancedRefreshLayout);
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.AdvancedRecyclerView);
         if (ta != null) {
-            if (ta.hasValue(R.styleable.AdvancedRefreshLayout_refreshHeaderClass)) {
-                refreshHeaderClass = ta.getString(R.styleable.AdvancedRefreshLayout_refreshHeaderClass);
+            if (ta.hasValue(R.styleable.AdvancedRecyclerView_refreshHeaderClass)) {
+                refreshHeaderClass = ta.getString(R.styleable.AdvancedRecyclerView_refreshHeaderClass);
             }
-            if (ta.hasValue(R.styleable.AdvancedRefreshLayout_refreshFooterClass)) {
-                refreshFooterClass = ta.getString(R.styleable.AdvancedRefreshLayout_refreshFooterClass);
+            if (ta.hasValue(R.styleable.AdvancedRecyclerView_refreshFooterClass)) {
+                refreshFooterClass = ta.getString(R.styleable.AdvancedRecyclerView_refreshFooterClass);
             }
-            mode = ta.getInt(R.styleable.AdvancedRefreshLayout_contentMode, MODE_NONE);
+            mode = ta.getInt(R.styleable.AdvancedRecyclerView_contentMode, MODE_NONE);
             ta.recycle();
         }
     }
@@ -159,7 +159,7 @@ public class AdvancedRefreshLayout extends SmartRefreshLayout implements DataBin
     }
 
     @BindingAdapter("proxy")
-    public static void setProxy(AdvancedRefreshLayout layout, RefreshLayoutProxy proxy) {
+    public static void setProxy(AdvancedRecyclerView layout, RefreshLayoutProxy proxy) {
         layout.setOnRefreshListener(proxy.getPullRefreshListener());
         layout.setOnLoadmoreListener(proxy.getLoadMoreListener());
         layout.setOnRefreshLoadmoreListener(proxy.getRefreshOrLoadMoreListener());

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="AdvancedRefreshLayout">
+    <declare-styleable name="AdvancedRecyclerView">
         <attr name="refreshHeaderClass" format="string" />
         <attr name="refreshFooterClass" format="string" />
         <attr name="contentMode" format="enum">
@@ -12,5 +12,10 @@
             <enum name="indexable" value="5" />
         </attr>
         <attr name="proxy" format="reference" />
+
+        <attr name="slideBarTextColor" format="color" />
+        <attr name="slideBarFocusTextColor" format="color" />
+        <attr name="slideBarTextSize" format="dimension" />
+        <attr name="slideBarFocusTextSize" format="dimension" />
     </declare-styleable>
 </resources>

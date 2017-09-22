@@ -25,7 +25,7 @@
             android:background="@color/colorPrimaryDark"
             android:elevation="10dp" />
 
-        <com.wuhenzhizao.view.AdvancedRefreshLayout xmlns:drag="http://schemas.android.com/apk/res-auto"
+        <com.wuhenzhizao.view.AdvancedRecyclerView xmlns:drag="http://schemas.android.com/apk/res-auto"
             android:id="@+id/drv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
