@@ -33,7 +33,8 @@ public class DragViewModel extends LifecycleViewModel {
     @Override
     protected void onCreate(Bundle bundle) {
         proxy = new RefreshLayoutProxy();
-        proxy.setEnableLoadMore(true);
+        proxy.setEnableRefresh(false);
+        proxy.setEnableLoadMore(false);
         proxy.setItemDragListener(new OnItemDragListener() {
             @Override
             public void onDrag(int fromPosition, int toPosition) {

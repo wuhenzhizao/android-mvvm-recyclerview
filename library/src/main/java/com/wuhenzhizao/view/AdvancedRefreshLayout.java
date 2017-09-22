@@ -31,10 +31,11 @@ public class AdvancedRefreshLayout extends SmartRefreshLayout implements DataBin
     private int mode;
 
     public static final int MODE_NONE = 0;       // 无RecyclerView，内部为普通布局
-    public static final int MODE_DEFAULT = 1;    // DefaultRecyclerView
+    public static final int MODE_Normal = 1;     // DefaultRecyclerView
     public static final int MODE_STICKY = 2;     // StickyHeaderRecyclerView
     public static final int MODE_SWIPE = 3;      // SwipeMenuRecyclerView
     public static final int MODE_DRAG = 4;       // DragRecyclerView
+    public static final int MODE_INDEXABLE = 5;  // DragRecyclerView
 
     public AdvancedRefreshLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -115,7 +116,7 @@ public class AdvancedRefreshLayout extends SmartRefreshLayout implements DataBin
     }
 
     private void initContent(Context context, AttributeSet attrs, int defStyleAttr) {
-        if (mode == MODE_DEFAULT) {
+        if (mode == MODE_Normal) {
             recyclerView = new DefaultRecyclerView(context, attrs, defStyleAttr);
         } else if (mode == MODE_STICKY) {
             recyclerView = new StickyHeaderRecyclerView(context, attrs, defStyleAttr);
@@ -169,6 +170,7 @@ public class AdvancedRefreshLayout extends SmartRefreshLayout implements DataBin
         layout.setEnableHeaderTranslationContent(proxy.isEnableHeaderTranslationContent());
         layout.setEnableFooterTranslationContent(proxy.isEnableFooterTranslationContent());
         layout.setEnableOverScrollBounce(proxy.isEnableOverScrollBounce());
+        layout.setEnablePureScrollMode(proxy.isEnablePureScrollMode());
         layout.setEnableScrollContentWhenLoaded(proxy.isEnableScrollContentWhenLoaded());
         layout.setEnableLoadmoreWhenContentNotFull(proxy.isEnableLoadMoreWhenContentNotFull());
         layout.setDisableContentWhenRefresh(proxy.isDisableContentWhenRefresh());

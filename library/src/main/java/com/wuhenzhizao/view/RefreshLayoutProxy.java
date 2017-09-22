@@ -23,6 +23,7 @@ public class RefreshLayoutProxy {
     private boolean enableHeaderTranslationContent = true;    //是否启用内容视图拖动效果
     private boolean enableFooterTranslationContent = true;    //是否启用内容视图拖动效果
     private boolean enableOverScrollBounce = true;            //是否启用越界回弹
+    private boolean enablePureScrollMode = false;             //是否开启纯滚动模式
     private boolean enableAutoLoadMore = true;                //是否在列表滚动到底部时自动加载更多
     private boolean enableScrollContentWhenLoaded = true;     //是否在加载更多完成之后滚动内容显示新数据
     private boolean enableLoadMoreWhenContentNotFull = false; //在内容不满一页的时候，是否可以上拉加载更多
@@ -115,6 +116,14 @@ public class RefreshLayoutProxy {
 
     public void setEnableOverScrollBounce(boolean enableOverScrollBounce) {
         this.enableOverScrollBounce = enableOverScrollBounce;
+    }
+
+    public boolean isEnablePureScrollMode() {
+        return enablePureScrollMode;
+    }
+
+    public void setEnablePureScrollMode(boolean enablePureScrollMode) {
+        this.enablePureScrollMode = enablePureScrollMode;
     }
 
     public boolean isEnableAutoLoadMore() {

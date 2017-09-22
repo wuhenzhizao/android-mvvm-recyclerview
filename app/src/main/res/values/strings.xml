@@ -1,5 +1,23 @@
 <resources>
-    <string name="app_name">MVVMRecyclerView</string>
+    <string name="app_name">AdvancedRecyclerView</string>
+    <string name="main_sticky_single">Sticky header(single type)</string>
+    <string name="main_sticky_multiple">Sticky header(multiple type)</string>
+    <string name="main_sticky_refresh">Sticky header with refresh/loadMore</string>
+    <string name="main_swipe_left">Swipe menu(drag edge: left)</string>
+    <string name="main_swipe_right">Swipe menu(drag edge: right)</string>
+    <string name="main_swipe_refresh">Swipe menu with refresh/loadMore</string>
+    <string name="main_drag">Drag</string>
+    <string name="main_indexable">Indexable</string>
+    <string name="main_indexable_refresh">Indexable with refresh/loadMore</string>
+
+    <string name="aboult_us">关于我们</string>
+
+    <string-array name="titles">
+        <item>Sticky</item>
+        <item>Swipe</item>
+        <item>Drag</item>
+        <item>Indexable</item>
+    </string-array>
 
     <string-array name="drag_names">
         <item>数据</item>

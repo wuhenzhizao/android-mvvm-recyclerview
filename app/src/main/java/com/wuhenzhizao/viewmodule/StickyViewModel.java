@@ -37,7 +37,13 @@ public class StickyViewModel extends LifecycleViewModel {
     @Override
     protected void onCreate(Bundle bundle) {
         proxy = new RefreshLayoutProxy();
-        proxy.setEnableLoadMore(true);
+        if (mode == StickyActivity.MODE_SINGLE_REFRESH) {
+            proxy.setEnableLoadMore(true);
+        } else {
+            proxy.setEnableRefresh(false);
+            proxy.setEnableLoadMore(false);
+        }
+
         proxy.setItemHeaderClickListener(new OnItemHeaderClickListener() {
             @Override
             public void onHeaderClick(int position, long headerId) {

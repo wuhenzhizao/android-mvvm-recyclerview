@@ -18,6 +18,7 @@ import com.wuhenzhizao.viewmodule.SwipeViewModel;
 public class SwipeMenuActivity extends BaseActivity {
     public static final int LEFT = 1;
     public static final int RIGHT = 0;
+    public static final int RIGHT_REFRESH = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,14 +26,27 @@ public class SwipeMenuActivity extends BaseActivity {
 
         ActivitySwipeMenuBinding binding = DataBindingFactory.setContentView(this, R.layout.activity_swipe_menu);
 
+        int mode = getIntent().getIntExtra("mode", RIGHT);
+
         setSupportActionBar(binding.toolbar);
-        getSupportActionBar().setTitle("SwipeMenuRecyclerView");
+        switch (mode) {
+            case LEFT:
+                getSupportActionBar().setTitle(getString(R.string.main_swipe_left));
+                break;
+            case RIGHT:
+                getSupportActionBar().setTitle(getString(R.string.main_swipe_right));
+                break;
+            case RIGHT_REFRESH:
+                getSupportActionBar().setTitle(getString(R.string.main_swipe_refresh));
+                break;
+        }
+        setSupportActionBar(binding.toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ViewModelFactory factory = MainModule.getInstance().getViewModelFactory();
         SwipeViewModel viewModel = factory.createViewModel("swipe_view_model", SwipeViewModel.class, this);
-        viewModel.setMode(getIntent().getIntExtra("mode", RIGHT));
+        viewModel.setMode(mode);
         binding.setVm(viewModel);
         addViewModel(viewModel);
     }

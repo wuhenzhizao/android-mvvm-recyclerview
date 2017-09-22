@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/toolbar"
-            sticky:contentMode="stickyRecyclerView"
+            sticky:contentMode="sticky"
             sticky:itemViewFactory="@{StickyItemViewFactory.className}"
             sticky:items="@{vm.itemList}"
             sticky:layoutManager="@{LayoutManagers.linear()}"

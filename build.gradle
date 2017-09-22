@@ -21,11 +21,13 @@ allprojects {
 ext {
     dependencies = [
             "appcompat"                  : "com.android.support:appcompat-v7:26.+",
+            "design"                     : "com.android.support:design:26.0.0-alpha1",
             "recyclerview"               : "com.android.support:recyclerview-v7:26.+",
             "multidex"                   : "com.android.support:multidex:1.0.1",
             "framework"                  : "com.gomeos.mvvm:mvvm:1.0.0",
             "swipe"                      : "com.daimajia.swipelayout:library:1.2.0",
             "smart_refresh"              : "com.scwang.smartrefresh:SmartRefreshLayout:1.0.3",
+            "smart_tab"                  : "com.ogaclejapan.smarttablayout:library:1.6.1",
             "fresco"                     : "com.facebook.fresco:fresco:1.5.0",
             "fresco_imagepipeline_okhttp": "com.facebook.fresco:imagepipeline-okhttp3:1.5.0",
             "fresco_drawee"              : "com.facebook.fresco:drawee:1.5.0",

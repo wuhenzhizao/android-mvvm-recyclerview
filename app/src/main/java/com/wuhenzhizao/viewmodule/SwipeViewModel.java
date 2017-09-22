@@ -39,14 +39,20 @@ public class SwipeViewModel extends LifecycleViewModel {
         super.onCreate(bundle);
         proxy = new RefreshLayoutProxy();
         proxy.setEnableLoadMore(true);
+        if (mode == SwipeMenuActivity.RIGHT_REFRESH) {
+            proxy.setEnableLoadMore(true);
+        } else {
+            proxy.setEnableRefresh(false);
+            proxy.setEnableLoadMore(false);
+        }
 
         itemList = new LinkedList<>();
         for (int i = 0; i < Address.provinces.length; i++) {
             SwipeBaseViewBean viewBean;
-            if (mode == SwipeMenuActivity.RIGHT) {
-                viewBean = new SwipeRightViewBean();
-            } else {
+            if (mode == SwipeMenuActivity.LEFT) {
                 viewBean = new SwipeLeftViewBean();
+            } else {
+                viewBean = new SwipeRightViewBean();
             }
             viewBean.setName(Address.provinces[i]);
             itemList.add(viewBean);

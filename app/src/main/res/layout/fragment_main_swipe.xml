@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.wuhenzhizao.viewmodule.MainSwipeViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:onClick="@{vm.swipeLeftClickCommand}"
+            android:text="@string/main_swipe_left"
+            android:textAllCaps="false"
+            android:textSize="16dp"
+            android:theme="@style/ButtonTheme" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="5dp"
+            android:onClick="@{vm.swipeRightClickCommand}"
+            android:text="@string/main_swipe_right"
+            android:textAllCaps="false"
+            android:textSize="16dp"
+            android:theme="@style/ButtonTheme" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="5dp"
+            android:onClick="@{vm.swipeRefreshClickCommand}"
+            android:text="@string/main_swipe_refresh"
+            android:textAllCaps="false"
+            android:textSize="16dp"
+            android:theme="@style/ButtonTheme" />
+    </LinearLayout>
+</layout>

@@ -60,4 +60,5 @@ dependencies {
     compile rootProject.ext.dependencies["rxandroid"]
     compile rootProject.ext.dependencies["okhttp"]
     compile rootProject.ext.dependencies["okhttp_logging"]
+    compile rootProject.ext.dependencies["smart_tab"]
 }

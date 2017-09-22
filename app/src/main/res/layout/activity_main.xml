@@ -1,81 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-    <data>
+    <!--<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:fitsSystemWindows="true"-->
+    <!--tools:context=".view.ui.MainActivity">-->
 
-        <variable
-            name="vm"
-            type="com.wuhenzhizao.viewmodule.MainViewModel" />
-    </data>
+    <!--<android.support.design.widget.AppBarLayout-->
+    <!--android:id="@+id/app_bar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="270dp"-->
+    <!--android:fitsSystemWindows="true"-->
+    <!--android:theme="@style/AppTheme.AppBarOverlay">-->
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <!--<android.support.design.widget.CollapsingToolbarLayout-->
+    <!--android:id="@+id/toolbar_layout"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:layout_weight="1.0"-->
+    <!--android:fitsSystemWindows="true"-->
+    <!--app:contentScrim="?attr/colorPrimary"-->
+    <!--app:layout_scrollFlags="scroll|exitUntilCollapsed">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:lineSpacingExtra="3dp"-->
+    <!--android:padding="20dp"-->
+    <!--android:text="MVVM架构的RecyclerView，解耦视图和数据\n1. Sticky Header效果;\n2. Swipe Menu效果;\n3. Drag拖拽效果;\n4. 下拉刷新，上拉加载更多;"-->
+    <!--android:textColor="@android:color/white"-->
+    <!--android:textSize="16dp" />-->
+
+    <!--<android.support.v7.widget.Toolbar-->
+    <!--android:id="@+id/toolbar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="?attr/actionBarSize"-->
+    <!--app:layout_collapseMode="pin"-->
+    <!--app:popupTheme="@style/AppTheme.PopupOverlay" />-->
+
+    <!--</android.support.design.widget.CollapsingToolbarLayout>-->
+
+    <!--<com.ogaclejapan.smarttablayout.SmartTabLayout xmlns:tab="http://schemas.android.com/apk/res-auto"-->
+    <!--android:id="@+id/tab_main"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="41dp"-->
+    <!--android:background="@color/colorPrimary"-->
+    <!--android:clipChildren="false"-->
+    <!--android:clipToPadding="false"-->
+    <!--android:paddingLeft="10dp"-->
+    <!--android:paddingRight="10dp"-->
+    <!--tab:stl_clickable="true"-->
+    <!--tab:stl_defaultTabBackground="@color/colorPrimary"-->
+    <!--tab:stl_defaultTabTextAllCaps="false"-->
+    <!--tab:stl_defaultTabTextColor="@color/comm_tab_text_selector"-->
+    <!--tab:stl_defaultTabTextHorizontalPadding="12dp"-->
+    <!--tab:stl_defaultTabTextMinWidth="0dp"-->
+    <!--tab:stl_defaultTabTextSize="16dp"-->
+    <!--tab:stl_distributeEvenly="false"-->
+    <!--tab:stl_dividerColor="#00000000"-->
+    <!--tab:stl_dividerThickness="0dp"-->
+    <!--tab:stl_drawDecorationAfterTab="false"-->
+    <!--tab:stl_indicatorColor="@android:color/white"-->
+    <!--tab:stl_indicatorCornerRadius="0dp"-->
+    <!--tab:stl_indicatorGravity="bottom"-->
+    <!--tab:stl_indicatorInFront="true"-->
+    <!--tab:stl_indicatorInterpolation="smart"-->
+    <!--tab:stl_indicatorThickness="2dp"-->
+    <!--tab:stl_indicatorWidth="auto"-->
+    <!--tab:stl_indicatorWithoutPadding="false"-->
+    <!--tab:stl_overlineColor="#4D000000"-->
+    <!--tab:stl_overlineThickness="0dp"-->
+    <!--tab:stl_underlineColor="#dddddd"-->
+    <!--tab:stl_underlineThickness="0px" />-->
+    <!--</android.support.design.widget.AppBarLayout>-->
+
+    <!--<android.support.v4.view.ViewPager-->
+    <!--android:id="@+id/pager_main"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:overScrollMode="never"-->
+    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior" />-->
+
+    <!--</android.support.design.widget.CoordinatorLayout>-->
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".view.ui.MainActivity">
+        android:layout_height="match_parent">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:popupTheme="@style/AppTheme.PopupOverlay"
+            android:background="@color/colorPrimaryDark" />
+
+        <com.ogaclejapan.smarttablayout.SmartTabLayout xmlns:tab="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/tab_main"
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:layout_below="@id/toolbar"
             android:background="@color/colorPrimaryDark"
-            android:elevation="10dp"/>
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            tab:stl_clickable="true"
+            tab:stl_defaultTabBackground="@color/colorPrimaryDark"
+            tab:stl_defaultTabTextAllCaps="false"
+            tab:stl_defaultTabTextColor="@color/comm_tab_text_selector"
+            tab:stl_defaultTabTextHorizontalPadding="12dp"
+            tab:stl_defaultTabTextMinWidth="0dp"
+            tab:stl_defaultTabTextSize="16dp"
+            tab:stl_distributeEvenly="false"
+            tab:stl_dividerColor="#00000000"
+            tab:stl_dividerThickness="0dp"
+            tab:stl_drawDecorationAfterTab="false"
+            tab:stl_indicatorColor="@android:color/white"
+            tab:stl_indicatorCornerRadius="0dp"
+            tab:stl_indicatorGravity="bottom"
+            tab:stl_indicatorInFront="true"
+            tab:stl_indicatorInterpolation="smart"
+            tab:stl_indicatorThickness="2dp"
+            tab:stl_indicatorWidth="auto"
+            tab:stl_indicatorWithoutPadding="false"
+            tab:stl_overlineColor="#4D000000"
+            tab:stl_overlineThickness="0dp"
+            tab:stl_underlineColor="#dddddd"
+            tab:stl_underlineThickness="0px" />
 
-        <Button
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager_main"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:onClick="@{vm.singleStickyClickCommand}"
-            android:text="Single Type Sticky"
-            android:textAllCaps="false"
-            android:textSize="16dp" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="5dp"
-            android:onClick="@{vm.multiStickyClickCommand}"
-            android:text="Multi Type Sticky"
-            android:textAllCaps="false"
-            android:textSize="16dp" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="5dp"
-            android:onClick="@{vm.leftSwipeClickCommand}"
-            android:text="SwipeMenu Left"
-            android:textAllCaps="false"
-            android:textSize="16dp" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="5dp"
-            android:onClick="@{vm.rightSwipeClickCommand}"
-            android:text="SwipeMenu Right"
-            android:textAllCaps="false"
-            android:textSize="16dp" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="5dp"
-            android:onClick="@{vm.dragClickCommand}"
-            android:text="Long Press to Drag"
-            android:textAllCaps="false"
-            android:textSize="16dp" />
-    </LinearLayout>
-
+            android:layout_height="match_parent"
+            android:layout_below="@id/tab_main"
+            android:overScrollMode="never" />
+    </RelativeLayout>
 </layout>

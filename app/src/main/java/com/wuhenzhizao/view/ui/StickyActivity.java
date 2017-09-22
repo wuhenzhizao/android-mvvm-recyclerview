@@ -18,6 +18,7 @@ import com.wuhenzhizao.viewmodule.StickyViewModel;
 public class StickyActivity extends BaseActivity {
     public static final int MODE_SINGLE = 0;
     public static final int MODE_MULTI = 1;
+    public static final int MODE_SINGLE_REFRESH = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,14 +26,26 @@ public class StickyActivity extends BaseActivity {
 
         ActivityStickyBinding binding = DataBindingFactory.setContentView(this, R.layout.activity_sticky);
 
+        int mode = getIntent().getIntExtra("mode", MODE_SINGLE);
+
         setSupportActionBar(binding.toolbar);
-        getSupportActionBar().setTitle("StickyHeaderRecyclerView");
+        switch (mode){
+            case MODE_SINGLE:
+                getSupportActionBar().setTitle(getString(R.string.main_sticky_single));
+                break;
+            case MODE_MULTI:
+                getSupportActionBar().setTitle(getString(R.string.main_sticky_multiple));
+                break;
+            case MODE_SINGLE_REFRESH:
+                getSupportActionBar().setTitle(getString(R.string.main_sticky_refresh));
+                break;
+        }
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ViewModelFactory factory = MainModule.getInstance().getViewModelFactory();
         StickyViewModel viewModel = factory.createViewModel("sticky_header_view_model", StickyViewModel.class, this);
-        viewModel.setMode(getIntent().getIntExtra("mode", MODE_SINGLE));
+        viewModel.setMode(mode);
         binding.setVm(viewModel);
         addViewModel(viewModel);
     }

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.wuhenzhizao.viewmodule.MainIndexableViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:onClick="@{vm.indexableClickCommand}"
+            android:text="@string/main_indexable"
+            android:textAllCaps="false"
+            android:textSize="16dp"
+            android:theme="@style/ButtonTheme" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="5dp"
+            android:onClick="@{vm.refreshClickCommand}"
+            android:text="@string/main_indexable_refresh"
+            android:textAllCaps="false"
+            android:textSize="16dp"
+            android:theme="@style/ButtonTheme" />
+    </LinearLayout>
+</layout>

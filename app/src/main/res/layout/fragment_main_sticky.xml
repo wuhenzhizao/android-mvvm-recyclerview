@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="vm"
+            type="com.wuhenzhizao.viewmodule.MainStickyViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:theme="@style/ButtonTheme"
+            android:onClick="@{vm.singleTypeClickCommand}"
+            android:text="@string/main_sticky_single"
+            android:textAllCaps="false"
+            android:textSize="16dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="5dp"
+            android:theme="@style/ButtonTheme"
+            android:onClick="@{vm.multipleTypeClickCommand}"
+            android:text="@string/main_sticky_multiple"
+            android:textAllCaps="false"
+            android:textSize="16dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="5dp"
+            android:theme="@style/ButtonTheme"
+            android:onClick="@{vm.refreshTypeClickCommand}"
+            android:text="@string/main_sticky_refresh"
+            android:textAllCaps="false"
+            android:textSize="16dp" />
+    </LinearLayout>
+</layout>
