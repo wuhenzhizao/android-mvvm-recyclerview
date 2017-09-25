@@ -1,4 +1,4 @@
-# Easy-MVVM-Recyclerview
+# Advanced-MVVM-Recyclerview
 基于MVVM架构的RecyclerView，更少的代码，更低的耦合性
 
 支持的功能
@@ -32,7 +32,7 @@
 - **DragRecyclerView**  
 
 <div style="float:left;border:solid 1px 000;margin:5px;">
-	<img src="screenshots/20170917_155648.gif" alt="screenshot" title="drag" width="250">
+	<img src="screenshots/20170925_104416.gif" alt="screenshot" title="drag" width="250">
 </div>
 <div style="clear:both;"></div>  
 
