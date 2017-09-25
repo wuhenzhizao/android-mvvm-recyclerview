@@ -19,7 +19,10 @@
 	<img src="screenshots/20170925_104127.gif" alt="screenshot" title="singleTypeWithPullRefresh" width="250">
 </div>
 <div style="clear:both;"></div>
-
+   
+   
+   
+   
 - **SwipeMenu**  
  
 <div style="float:left;border:solid 1px 000;margin:5px;">
@@ -28,7 +31,9 @@
 	<img src="screenshots/gifeditor_20170925_105554.gif" alt="screenshot" title="swipeMenuRightWithPullRefresh" width="250">
 </div>
 <div style="clear:both;"></div>  
-  
+   
+   
+   
 - **DragRecyclerView**  
 
 <div style="float:left;border:solid 1px 000;margin:5px;">
