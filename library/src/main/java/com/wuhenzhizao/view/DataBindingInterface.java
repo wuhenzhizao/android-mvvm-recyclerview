@@ -5,7 +5,7 @@ import com.gomeos.mvvm.view.LayoutManagers;
 import java.util.List;
 
 /**
- * Created by liufei on 2017/9/21.
+ * Created by wuhenzhizao on 2017/9/21.
  */
 
 public interface DataBindingInterface {

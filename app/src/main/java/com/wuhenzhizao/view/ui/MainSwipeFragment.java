@@ -14,7 +14,7 @@ import com.wuhenzhizao.databinding.FragmentMainSwipeBinding;
 import com.wuhenzhizao.viewmodule.MainSwipeViewModel;
 
 /**
- * Created by liufei on 2017/9/22.
+ * Created by wuhenzhizao on 2017/9/22.
  */
 
 public class MainSwipeFragment extends BaseFragment {

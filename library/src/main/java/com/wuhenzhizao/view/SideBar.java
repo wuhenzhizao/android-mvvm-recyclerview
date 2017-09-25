@@ -15,7 +15,7 @@ import com.gomeos.mvvm.utils.ScreenUtils;
 import com.wuhenzhizao.adapter.R;
 
 /**
- * Created by liufei on 2017/9/22.
+ * Created by wuhenzhizao on 2017/9/22.
  */
 public class SideBar extends View {
     private String[] words;
@@ -28,6 +28,8 @@ public class SideBar extends View {
     private int textColor;
     private int focusTextSize;
     private int focusTextColor;
+
+    private OnChangedListener listener;
 
     public SideBar(Context context) {
         super(context);
@@ -67,6 +69,14 @@ public class SideBar extends View {
         this.words = words;
     }
 
+    public OnChangedListener getListener() {
+        return listener;
+    }
+
+    public void setListener(OnChangedListener listener) {
+        this.listener = listener;
+    }
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         itemWidth = getMeasuredWidth();
@@ -101,6 +111,7 @@ public class SideBar extends View {
                 int index = (int) (currentY / itemHeight);
                 if (index != touchIndex) {
                     touchIndex = index;
+                    listener.onChanged(words[touchIndex]);
                 }
                 invalidate();
                 break;

@@ -14,7 +14,7 @@ import com.wuhenzhizao.databinding.FragmentMainIndexableBinding;
 import com.wuhenzhizao.viewmodule.MainIndexableViewModel;
 
 /**
- * Created by liufei on 2017/9/22.
+ * Created by wuhenzhizao on 2017/9/22.
  */
 
 public class MainIndexableFragment extends BaseFragment {

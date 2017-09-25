@@ -4,7 +4,7 @@ import com.gomeos.mvvm.viewmodel.LifecycleViewModel;
 import com.gomeos.mvvm.viewmodel.command.OnClickCommand;
 
 /**
- * Created by liufei on 2017/9/22.
+ * Created by wuhenzhizao on 2017/9/22.
  */
 
 public class MainIndexableViewModel extends LifecycleViewModel{

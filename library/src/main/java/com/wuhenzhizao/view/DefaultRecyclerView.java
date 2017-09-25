@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import com.wuhenzhizao.adapter.ViewModelRecyclerViewAdapter;
 
 /**
- * Created by liufei on 2017/9/21.
+ * Created by wuhenzhizao on 2017/9/21.
  */
 
 public class DefaultRecyclerView extends BaseRecyclerView {

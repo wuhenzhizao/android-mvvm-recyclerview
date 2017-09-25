@@ -7,7 +7,7 @@ import com.gomeos.mvvm.viewmodel.command.OnClickCommand;
 import com.wuhenzhizao.view.ui.StickyActivity;
 
 /**
- * Created by liufei on 2017/9/22.
+ * Created by wuhenzhizao on 2017/9/22.
  */
 
 public class MainStickyViewModel extends LifecycleViewModel {

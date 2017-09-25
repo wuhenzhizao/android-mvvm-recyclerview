@@ -14,7 +14,7 @@ import com.wuhenzhizao.databinding.FragmentMainDragBinding;
 import com.wuhenzhizao.viewmodule.MainDragViewModel;
 
 /**
- * Created by liufei on 2017/9/22.
+ * Created by wuhenzhizao on 2017/9/22.
  */
 
 public class MainDragFragment extends BaseFragment {

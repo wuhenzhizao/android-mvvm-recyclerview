@@ -21,7 +21,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 /**
- * Created by liufei on 2017/9/20.
+ * Created by wuhenzhizao on 2017/9/20.
  */
 public class AdvancedRecyclerView extends SmartRefreshLayout implements DataBindingInterface {
     private BaseRecyclerView recyclerView;
@@ -35,7 +35,6 @@ public class AdvancedRecyclerView extends SmartRefreshLayout implements DataBind
     public static final int MODE_STICKY = 2;     // StickyHeaderRecyclerView
     public static final int MODE_SWIPE = 3;      // SwipeMenuRecyclerView
     public static final int MODE_DRAG = 4;       // DragRecyclerView
-    public static final int MODE_INDEXABLE = 5;  // DragRecyclerView
 
     public AdvancedRecyclerView(Context context, AttributeSet attrs) {
         super(context, attrs);
