@@ -34,7 +34,7 @@
    
    
    
-- **DragRecyclerView**  
+- **Drag**  
 
 <div style="float:left;border:solid 1px 000;margin:5px;">
 	<img src="screenshots/20170925_104416.gif" alt="screenshot" title="drag" width="250">
