@@ -27,8 +27,8 @@ public class RefreshLayoutProxy {
     private boolean enableAutoLoadMore = true;                //是否在列表滚动到底部时自动加载更多
     private boolean enableScrollContentWhenLoaded = true;     //是否在加载更多完成之后滚动内容显示新数据
     private boolean enableLoadMoreWhenContentNotFull = false; //在内容不满一页的时候，是否可以上拉加载更多
-    private boolean disableContentWhenRefresh = false;        //是否开启在刷新时候禁止操作内容视图
-    private boolean disableContentWhenLoading = false;        //是否开启在刷新时候禁止操作内容视图
+    private boolean disableContentWhenRefresh = false;        //是否开启在刷新时禁止操作内容视图
+    private boolean disableContentWhenLoading = false;        //是否开启在加载时禁止操作内容视图
 
     public OnItemDragListener getItemDragListener() {
         return itemDragListener;

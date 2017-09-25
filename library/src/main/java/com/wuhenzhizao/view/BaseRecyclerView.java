@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by chenbaocheng on 16/8/14.
  */
-public abstract class BaseRecyclerView<RVA extends ViewModelRecyclerViewAdapter> extends RecyclerView implements DataBindingInterface, Indexable {
+public abstract class BaseRecyclerView<RVA extends ViewModelRecyclerViewAdapter> extends RecyclerView implements DataBindingInterface {
     protected RVA adapter;
     protected String itemViewFactory;
     protected boolean isLooped = false;

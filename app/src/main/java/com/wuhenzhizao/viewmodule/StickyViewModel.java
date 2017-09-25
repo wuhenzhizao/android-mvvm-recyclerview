@@ -56,7 +56,7 @@ public class StickyViewModel extends LifecycleViewModel {
         });
 
         itemList = new LinkedList<>();
-        for (int i = 0; i < Address.provinces.length; i++) {
+        for (int i = 0; i < Address.provinces.length / 3; i++) {
             for (int j = 0; j < Address.citys[i].length; j++) {
                 StickyTestViewBean viewBean = new StickyTestViewBean();
                 viewBean.setHeadId(i + 1);
