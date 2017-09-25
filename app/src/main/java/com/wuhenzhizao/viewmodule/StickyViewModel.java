@@ -6,7 +6,7 @@ import android.widget.Toast;
 import com.gomeos.mvvm.viewmodel.LifecycleViewModel;
 import com.wuhenzhizao.api.OnItemHeaderClickListener;
 import com.wuhenzhizao.model.MainUseCase;
-import com.wuhenzhizao.view.RefreshLayoutProxy;
+import com.wuhenzhizao.view.RecyclerViewProxy;
 import com.wuhenzhizao.view.ui.StickyActivity;
 import com.wuhenzhizao.viewmodule.viewbean.StickyTestViewBean;
 
@@ -19,7 +19,7 @@ import java.util.List;
 
 public class StickyViewModel extends LifecycleViewModel {
     private MainUseCase useCase;
-    private RefreshLayoutProxy proxy;
+    private RecyclerViewProxy proxy;
     private List<StickyTestViewBean> itemList;
     private int mode;
 
@@ -31,13 +31,13 @@ public class StickyViewModel extends LifecycleViewModel {
         return itemList;
     }
 
-    public RefreshLayoutProxy getProxy() {
+    public RecyclerViewProxy getProxy() {
         return proxy;
     }
 
     @Override
     protected void onCreate(Bundle bundle) {
-        proxy = new RefreshLayoutProxy();
+        proxy = new RecyclerViewProxy();
         if (mode == StickyActivity.MODE_SINGLE_REFRESH) {
             proxy.setEnableLoadMore(true);
         } else {

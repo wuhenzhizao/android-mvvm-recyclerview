@@ -157,7 +157,7 @@ public class AdvancedRecyclerView extends SmartRefreshLayout implements DataBind
     }
 
     @BindingAdapter("proxy")
-    public static void setProxy(AdvancedRecyclerView layout, RefreshLayoutProxy proxy) {
+    public static void setProxy(AdvancedRecyclerView layout, RecyclerViewProxy proxy) {
         layout.setOnRefreshListener(proxy.getPullRefreshListener());
         layout.setOnLoadmoreListener(proxy.getLoadMoreListener());
         layout.setOnRefreshLoadmoreListener(proxy.getRefreshOrLoadMoreListener());

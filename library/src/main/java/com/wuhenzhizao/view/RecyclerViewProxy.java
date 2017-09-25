@@ -11,7 +11,7 @@ import com.wuhenzhizao.api.OnRefreshOrLoadMoreListener;
  * Created by wuhenzhizao on 2017/9/21.
  */
 
-public class RefreshLayoutProxy {
+public class RecyclerViewProxy {
     private OnItemDragListener itemDragListener;
     private OnItemHeaderClickListener itemHeaderClickListener;
     private OnPullRefreshListener pullRefreshListener;

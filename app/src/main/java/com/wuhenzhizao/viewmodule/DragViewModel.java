@@ -6,7 +6,7 @@ import android.os.Bundle;
 import com.gomeos.mvvm.viewmodel.LifecycleViewModel;
 import com.wuhenzhizao.R;
 import com.wuhenzhizao.api.OnItemDragListener;
-import com.wuhenzhizao.view.RefreshLayoutProxy;
+import com.wuhenzhizao.view.RecyclerViewProxy;
 import com.wuhenzhizao.viewmodule.viewbean.DragViewBean;
 
 import java.util.Arrays;
@@ -19,20 +19,20 @@ import java.util.List;
  */
 
 public class DragViewModel extends LifecycleViewModel {
-    private RefreshLayoutProxy proxy;
+    private RecyclerViewProxy proxy;
     private List<DragViewBean> itemList;
 
     public List<DragViewBean> getItemList() {
         return itemList;
     }
 
-    public RefreshLayoutProxy getProxy() {
+    public RecyclerViewProxy getProxy() {
         return proxy;
     }
 
     @Override
     protected void onCreate(Bundle bundle) {
-        proxy = new RefreshLayoutProxy();
+        proxy = new RecyclerViewProxy();
         proxy.setEnableRefresh(false);
         proxy.setEnableLoadMore(false);
         proxy.setItemDragListener(new OnItemDragListener() {

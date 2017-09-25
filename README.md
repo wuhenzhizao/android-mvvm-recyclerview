@@ -90,7 +90,7 @@ StickyHeader，支持多样式
 > 绑定Stick Header点击监听
   
 ```java
-RefreshLayoutProxy proxy = new RefreshLayoutProxy();
+RecyclerViewProxy proxy = new RecyclerViewProxy();
 proxy.setItemHeaderClickListener(new OnItemHeaderClickListener() {
     @Override
     public void onHeaderClick(int position, long headerId) {
@@ -176,7 +176,7 @@ Drag
 > 绑定Drag事件监听
   
 ```java
-RefreshLayoutProxy proxy = new RefreshLayoutProxy();
+RecyclerViewProxy proxy = new RecyclerViewProxy();
 proxy.setItemDragListener(new OnItemDragListener() {
     @Override
     public void onDrag(int fromPosition, int toPosition) {
@@ -187,11 +187,11 @@ proxy.setItemDragListener(new OnItemDragListener() {
 
 Pull Refresh And Load More
 ==========================  
-[AdvancedRecyclerView](library/src/main/java/com/wuhenzhizao/view/AdvancedRecyclerView.java)集成了[StickyHeader]，[SwipeMenu]，[Drag]，[上拉刷新，下拉加载更多]，上拉刷新，下拉加载更多通过[RefreshLayoutProxy](library/src/main/java/com/wuhenzhizao/view/RefreshLayoutProxy.java)进行控制  
+[AdvancedRecyclerView](library/src/main/java/com/wuhenzhizao/view/AdvancedRecyclerView.java)集成了[StickyHeader]，[SwipeMenu]，[Drag]，[上拉刷新，下拉加载更多]，上拉刷新，下拉加载更多通过[RefreshLayoutProxy](library/src/main/java/com/wuhenzhizao/view/RecyclerViewProxy.java)实现
 
 
 ```java
-RefreshLayoutProxy {
+RecyclerViewProxy {
 	...
 	// 设置下拉刷新监听
 	public void setPullRefreshListener(OnPullRefreshListener pullRefreshListener);
