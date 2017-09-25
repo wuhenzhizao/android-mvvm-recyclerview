@@ -5,7 +5,7 @@ import android.widget.Toast;
 
 import com.gomeos.mvvm.viewmodel.LifecycleViewModel;
 import com.wuhenzhizao.api.OnItemHeaderClickListener;
-import com.wuhenzhizao.model.Address;
+import com.wuhenzhizao.model.MainUseCase;
 import com.wuhenzhizao.view.RefreshLayoutProxy;
 import com.wuhenzhizao.view.ui.StickyActivity;
 import com.wuhenzhizao.viewmodule.viewbean.StickyTestViewBean;
@@ -18,6 +18,7 @@ import java.util.List;
  */
 
 public class StickyViewModel extends LifecycleViewModel {
+    private MainUseCase useCase;
     private RefreshLayoutProxy proxy;
     private List<StickyTestViewBean> itemList;
     private int mode;
@@ -55,13 +56,17 @@ public class StickyViewModel extends LifecycleViewModel {
             }
         });
 
+        useCase = obtainUseCase(MainUseCase.class);
+        String[] provinces = useCase.getProviceList();
+        String[][] citys = useCase.getCityList();
+
         itemList = new LinkedList<>();
-        for (int i = 0; i < Address.provinces.length / 3; i++) {
-            for (int j = 0; j < Address.citys[i].length; j++) {
+        for (int i = 0; i < provinces.length / 3; i++) {
+            for (int j = 0; j < citys[i].length; j++) {
                 StickyTestViewBean viewBean = new StickyTestViewBean();
                 viewBean.setHeadId(i + 1);
-                viewBean.setTitle(Address.provinces[i]);
-                viewBean.setName(Address.citys[i][j]);
+                viewBean.setTitle(provinces[i]);
+                viewBean.setName(citys[i][j]);
                 if (mode == StickyActivity.MODE_SINGLE) {
                     viewBean.setStickyTheme(1);
                 } else {

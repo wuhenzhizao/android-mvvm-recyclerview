@@ -24,7 +24,7 @@ public class DragActivity extends BaseActivity {
         ActivityDragBinding binding = DataBindingFactory.setContentView(this, R.layout.activity_drag);
 
         setSupportActionBar(binding.toolbar);
-        getSupportActionBar().setTitle("DragRecyclerView");
+        getSupportActionBar().setTitle("Drag");
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

@@ -3,7 +3,7 @@ package com.wuhenzhizao.viewmodule;
 import android.os.Bundle;
 
 import com.gomeos.mvvm.viewmodel.LifecycleViewModel;
-import com.wuhenzhizao.model.Address;
+import com.wuhenzhizao.model.MainUseCase;
 import com.wuhenzhizao.view.RefreshLayoutProxy;
 import com.wuhenzhizao.view.ui.SwipeMenuActivity;
 import com.wuhenzhizao.viewmodule.viewbean.SwipeBaseViewBean;
@@ -18,6 +18,7 @@ import java.util.List;
  */
 
 public class SwipeViewModel extends LifecycleViewModel {
+    private MainUseCase useCase;
     private RefreshLayoutProxy proxy;
     private List<SwipeBaseViewBean> itemList;
     private int mode;
@@ -46,15 +47,18 @@ public class SwipeViewModel extends LifecycleViewModel {
             proxy.setEnableLoadMore(false);
         }
 
+        useCase = obtainUseCase(MainUseCase.class);
+        String[] provinces = useCase.getProviceList();
+
         itemList = new LinkedList<>();
-        for (int i = 0; i < Address.provinces.length / 3; i++) {
+        for (int i = 0; i < provinces.length / 2; i++) {
             SwipeBaseViewBean viewBean;
             if (mode == SwipeMenuActivity.LEFT) {
                 viewBean = new SwipeLeftViewBean();
             } else {
                 viewBean = new SwipeRightViewBean();
             }
-            viewBean.setName(Address.provinces[i]);
+            viewBean.setName(provinces[i]);
             itemList.add(viewBean);
         }
         notifyChange();

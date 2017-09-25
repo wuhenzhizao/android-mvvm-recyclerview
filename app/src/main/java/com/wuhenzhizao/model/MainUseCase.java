@@ -17,4 +17,12 @@ public class MainUseCase extends UseCase {
     protected void onClose() {
 
     }
+
+    public String[] getProviceList() {
+        return Address.provinces;
+    }
+
+    public String[][] getCityList() {
+        return Address.citys;
+    }
 }
