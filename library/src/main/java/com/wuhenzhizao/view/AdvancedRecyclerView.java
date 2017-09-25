@@ -30,8 +30,7 @@ public class AdvancedRecyclerView extends SmartRefreshLayout implements DataBind
     private String refreshFooterClass = ClassicsFooter.class.getName();
     private int mode;
 
-    public static final int MODE_NONE = 0;       // 无RecyclerView，内部为普通布局
-    public static final int MODE_Normal = 1;     // DefaultRecyclerView
+    public static final int MODE_NORMAL = 1;     // DefaultRecyclerView
     public static final int MODE_STICKY = 2;     // StickyHeaderRecyclerView
     public static final int MODE_SWIPE = 3;      // SwipeMenuRecyclerView
     public static final int MODE_DRAG = 4;       // DragRecyclerView
@@ -57,13 +56,13 @@ public class AdvancedRecyclerView extends SmartRefreshLayout implements DataBind
             if (ta.hasValue(R.styleable.AdvancedRecyclerView_refreshFooterClass)) {
                 refreshFooterClass = ta.getString(R.styleable.AdvancedRecyclerView_refreshFooterClass);
             }
-            mode = ta.getInt(R.styleable.AdvancedRecyclerView_contentMode, MODE_NONE);
+            mode = ta.getInt(R.styleable.AdvancedRecyclerView_contentMode, MODE_NORMAL);
             ta.recycle();
         }
     }
 
     private void initChildView(Context context, AttributeSet attrs, int defStyleAttr) {
-        if (mode == MODE_NONE) {
+        if (mode == MODE_NORMAL) {
             setEnableRefresh(false);
             setEnableLoadmore(false);
             setEnableAutoLoadmore(false);
@@ -115,7 +114,7 @@ public class AdvancedRecyclerView extends SmartRefreshLayout implements DataBind
     }
 
     private void initContent(Context context, AttributeSet attrs, int defStyleAttr) {
-        if (mode == MODE_Normal) {
+        if (mode == MODE_NORMAL) {
             recyclerView = new DefaultRecyclerView(context, attrs, defStyleAttr);
         } else if (mode == MODE_STICKY) {
             recyclerView = new StickyHeaderRecyclerView(context, attrs, defStyleAttr);
