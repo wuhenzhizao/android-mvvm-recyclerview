@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.gomeos.mvvm.viewmodel.LifecycleViewModel;
 import com.wuhenzhizao.model.MainUseCase;
 import com.wuhenzhizao.view.RecyclerViewProxy;
+import com.wuhenzhizao.view.proxy.RefreshRecyclerViewProxy;
 import com.wuhenzhizao.view.ui.SwipeMenuActivity;
 import com.wuhenzhizao.viewmodule.viewbean.SwipeBaseViewBean;
 import com.wuhenzhizao.viewmodule.viewbean.SwipeLeftViewBean;
@@ -19,7 +20,7 @@ import java.util.List;
 
 public class SwipeViewModel extends LifecycleViewModel {
     private MainUseCase useCase;
-    private RecyclerViewProxy proxy;
+    private RefreshRecyclerViewProxy proxy;
     private List<SwipeBaseViewBean> itemList;
     private int mode;
 
@@ -31,14 +32,14 @@ public class SwipeViewModel extends LifecycleViewModel {
         return itemList;
     }
 
-    public RecyclerViewProxy getProxy() {
+    public RefreshRecyclerViewProxy getProxy() {
         return proxy;
     }
 
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        proxy = new RecyclerViewProxy();
+        proxy = new RefreshRecyclerViewProxy();
         proxy.setEnableLoadMore(true);
         if (mode == SwipeMenuActivity.RIGHT_REFRESH) {
             proxy.setEnableLoadMore(true);

@@ -7,6 +7,7 @@ import com.gomeos.mvvm.viewmodel.LifecycleViewModel;
 import com.wuhenzhizao.api.OnItemHeaderClickListener;
 import com.wuhenzhizao.model.MainUseCase;
 import com.wuhenzhizao.view.RecyclerViewProxy;
+import com.wuhenzhizao.view.proxy.RefreshRecyclerViewProxy;
 import com.wuhenzhizao.view.ui.StickyActivity;
 import com.wuhenzhizao.viewmodule.viewbean.StickyTestViewBean;
 
@@ -19,7 +20,7 @@ import java.util.List;
 
 public class StickyViewModel extends LifecycleViewModel {
     private MainUseCase useCase;
-    private RecyclerViewProxy proxy;
+    private RefreshRecyclerViewProxy proxy;
     private List<StickyTestViewBean> itemList;
     private int mode;
 
@@ -31,13 +32,13 @@ public class StickyViewModel extends LifecycleViewModel {
         return itemList;
     }
 
-    public RecyclerViewProxy getProxy() {
+    public RefreshRecyclerViewProxy getProxy() {
         return proxy;
     }
 
     @Override
     protected void onCreate(Bundle bundle) {
-        proxy = new RecyclerViewProxy();
+        proxy = new RefreshRecyclerViewProxy();
         if (mode == StickyActivity.MODE_SINGLE_REFRESH) {
             proxy.setEnableLoadMore(true);
         } else {

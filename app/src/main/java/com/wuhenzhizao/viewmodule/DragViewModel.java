@@ -7,6 +7,7 @@ import com.gomeos.mvvm.viewmodel.LifecycleViewModel;
 import com.wuhenzhizao.R;
 import com.wuhenzhizao.api.OnItemDragListener;
 import com.wuhenzhizao.view.RecyclerViewProxy;
+import com.wuhenzhizao.view.proxy.RefreshRecyclerViewProxy;
 import com.wuhenzhizao.viewmodule.viewbean.DragViewBean;
 
 import java.util.Arrays;
@@ -19,20 +20,20 @@ import java.util.List;
  */
 
 public class DragViewModel extends LifecycleViewModel {
-    private RecyclerViewProxy proxy;
+    private RefreshRecyclerViewProxy proxy;
     private List<DragViewBean> itemList;
 
     public List<DragViewBean> getItemList() {
         return itemList;
     }
 
-    public RecyclerViewProxy getProxy() {
+    public RefreshRecyclerViewProxy getProxy() {
         return proxy;
     }
 
     @Override
     protected void onCreate(Bundle bundle) {
-        proxy = new RecyclerViewProxy();
+        proxy = new RefreshRecyclerViewProxy();
         proxy.setEnableRefresh(false);
         proxy.setEnableLoadMore(false);
         proxy.setItemDragListener(new OnItemDragListener() {

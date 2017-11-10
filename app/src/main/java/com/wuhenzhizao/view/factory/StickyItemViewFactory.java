@@ -9,6 +9,7 @@ import com.wuhenzhizao.databinding.ItemStickyContentBinding;
 import com.wuhenzhizao.databinding.ItemStickyHeaderBinding;
 import com.wuhenzhizao.databinding.ItemStickyMenuBinding;
 import com.wuhenzhizao.factory.StickyViewFactory;
+import com.wuhenzhizao.viewbean.StickyViewBean;
 import com.wuhenzhizao.viewmodule.StickyHeaderItemViewModel;
 import com.wuhenzhizao.viewmodule.StickyItemViewModel;
 import com.wuhenzhizao.viewmodule.StickyMenuItemViewModel;
@@ -18,14 +19,14 @@ import com.wuhenzhizao.viewmodule.viewbean.StickyTestViewBean;
  * Created by wuhenzhizao on 2017/9/14.
  */
 
-public class StickyItemViewFactory extends StickyViewFactory<com.wuhenzhizao.viewbean.StickyViewBean> {
+public class StickyItemViewFactory extends StickyViewFactory<StickyViewBean> {
 
     public static String getClassName() {
         return StickyItemViewFactory.class.getName();
     }
 
     @Override
-    protected Class<? extends AbsItemViewModel> getHeaderViewModelType(com.wuhenzhizao.viewbean.StickyViewBean item) {
+    protected Class<? extends AbsItemViewModel> getHeaderViewModelType(StickyViewBean item) {
         if (item instanceof StickyTestViewBean) {
             if (((StickyTestViewBean) item).getStickyTheme() == 1){
                 return StickyHeaderItemViewModel.class;
@@ -51,7 +52,7 @@ public class StickyItemViewFactory extends StickyViewFactory<com.wuhenzhizao.vie
     }
 
     @Override
-    protected Class<? extends AbsItemViewModel> getViewModelType(com.wuhenzhizao.viewbean.StickyViewBean item) {
+    protected Class<? extends AbsItemViewModel> getViewModelType(StickyViewBean item) {
         if (item instanceof StickyTestViewBean) {
             return StickyItemViewModel.class;
         }

@@ -1,5 +1,9 @@
 package com.wuhenzhizao.view;
 
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+
 import com.wuhenzhizao.api.OnItemDragListener;
 import com.wuhenzhizao.api.OnItemHeaderClickListener;
 import com.wuhenzhizao.api.OnLoadMoreListener;
@@ -7,162 +11,101 @@ import com.wuhenzhizao.api.OnMultiChangedListener;
 import com.wuhenzhizao.api.OnPullRefreshListener;
 import com.wuhenzhizao.api.OnRefreshOrLoadMoreListener;
 
+import java.lang.ref.WeakReference;
+
 /**
  * Created by wuhenzhizao on 2017/9/21.
  */
 
 public class RecyclerViewProxy {
-    private OnItemDragListener itemDragListener;
-    private OnItemHeaderClickListener itemHeaderClickListener;
-    private OnPullRefreshListener pullRefreshListener;
-    private OnLoadMoreListener loadMoreListener;
-    private OnRefreshOrLoadMoreListener refreshOrLoadMoreListener;
-    private OnMultiChangedListener multiChangedListener;
-    private boolean enableRefresh = true;
-    private boolean enableLoadMore = false;
-    private boolean enableHeaderTranslationContent = true;    //是否启用内容视图拖动效果
-    private boolean enableFooterTranslationContent = true;    //是否启用内容视图拖动效果
-    private boolean enableOverScrollBounce = true;            //是否启用越界回弹
-    private boolean enablePureScrollMode = false;             //是否开启纯滚动模式
-    private boolean enableAutoLoadMore = true;                //是否在列表滚动到底部时自动加载更多
-    private boolean enableScrollContentWhenLoaded = true;     //是否在加载更多完成之后滚动内容显示新数据
-    private boolean enableLoadMoreWhenContentNotFull = false; //在内容不满一页的时候，是否可以上拉加载更多
-    private boolean disableContentWhenRefresh = false;        //是否开启在刷新时禁止操作内容视图
-    private boolean disableContentWhenLoading = false;        //是否开启在加载时禁止操作内容视图
+    protected WeakReference<RecyclerView> recyclerViewRf;
+    protected RecyclerView.ItemDecoration itemDecoration;
+    protected RecyclerView.OnScrollListener scrollListener;
 
-    public OnItemDragListener getItemDragListener() {
-        return itemDragListener;
+    public RecyclerView.ItemDecoration getItemDecoration() {
+        return itemDecoration;
     }
 
-    public void setItemDragListener(OnItemDragListener itemDragListener) {
-        this.itemDragListener = itemDragListener;
+    public void attach(RecyclerView recyclerView) {
+        this.recyclerViewRf = new WeakReference<>(recyclerView);
     }
 
-    public OnItemHeaderClickListener getItemHeaderClickListener() {
-        return itemHeaderClickListener;
+    public void setItemDecoration(RecyclerView.ItemDecoration itemDecoration) {
+        this.itemDecoration = itemDecoration;
     }
 
-    public void setItemHeaderClickListener(OnItemHeaderClickListener itemHeaderClickListener) {
-        this.itemHeaderClickListener = itemHeaderClickListener;
+    public RecyclerView.OnScrollListener getScrollListener() {
+        return scrollListener;
     }
 
-    public OnPullRefreshListener getPullRefreshListener() {
-        return pullRefreshListener;
+    public void setScrollListener(RecyclerView.OnScrollListener scrollListener) {
+        this.scrollListener = scrollListener;
     }
 
-    public void setPullRefreshListener(OnPullRefreshListener pullRefreshListener) {
-        this.pullRefreshListener = pullRefreshListener;
+    public int getFirstVisibleItemPosition() {
+        if (recyclerViewRf.isEnqueued()) return 0;
+        RecyclerView.LayoutManager layoutManager = recyclerViewRf.get().getLayoutManager();
+        if (layoutManager instanceof LinearLayoutManager) {
+            return ((LinearLayoutManager) layoutManager).findFirstVisibleItemPosition();
+        } else if (layoutManager instanceof GridLayoutManager) {
+            return ((GridLayoutManager) layoutManager).findFirstVisibleItemPosition();
+        }
+        return 0;
     }
 
-    public OnLoadMoreListener getLoadMoreListener() {
-        return loadMoreListener;
+    public int getLastVisibleItemPosition() {
+        if (recyclerViewRf.isEnqueued()) return 0;
+        RecyclerView.LayoutManager layoutManager = recyclerViewRf.get().getLayoutManager();
+        if (layoutManager instanceof LinearLayoutManager) {
+            return ((LinearLayoutManager) layoutManager).findLastVisibleItemPosition();
+        } else if (layoutManager instanceof GridLayoutManager) {
+            return ((GridLayoutManager) layoutManager).findLastVisibleItemPosition();
+        }
+        return 0;
     }
 
-    public void setLoadMoreListener(OnLoadMoreListener loadMoreListener) {
-        this.loadMoreListener = loadMoreListener;
+    public void scrollToPosition(int position, final int offSet) {
+        if (recyclerViewRf.isEnqueued()) return;
+        RecyclerView recyclerView = recyclerViewRf.get();
+        int firstVisiblePosition = getFirstVisibleItemPosition();
+        int lastVisiblePosition = getLastVisibleItemPosition();
+        if (position < firstVisiblePosition) {
+            recyclerView.smoothScrollToPosition(position);
+        } else if (position <= lastVisiblePosition) {
+            int movePosition = position - firstVisiblePosition;
+            if (movePosition >= 0 && movePosition < recyclerView.getChildCount()) {
+                int top = recyclerView.getChildAt(movePosition).getTop();
+                recyclerView.scrollBy(0, top + offSet);
+            }
+        } else {
+            recyclerView.smoothScrollToPosition(position);
+            recyclerView.addOnScrollListener(new ScrollListener(true, position, offSet));
+        }
     }
 
-    public OnRefreshOrLoadMoreListener getRefreshOrLoadMoreListener() {
-        return refreshOrLoadMoreListener;
-    }
+    class ScrollListener extends RecyclerView.OnScrollListener {
+        private boolean moveBelowLastVisiblePosition;
+        private int targetPosition;
+        private int offSet;
 
-    public void setRefreshOrLoadMoreListener(OnRefreshOrLoadMoreListener refreshOrLoadMoreListener) {
-        this.refreshOrLoadMoreListener = refreshOrLoadMoreListener;
-    }
+        public ScrollListener(boolean moveBelowLastVisiblePosition, int targetPosition, int offSet) {
+            this.moveBelowLastVisiblePosition = moveBelowLastVisiblePosition;
+            this.targetPosition = targetPosition;
+            this.offSet = offSet;
+        }
 
-    public OnMultiChangedListener getMultiChangedListener() {
-        return multiChangedListener;
-    }
-
-    public void setMultiChangedListener(OnMultiChangedListener multiChangedListener) {
-        this.multiChangedListener = multiChangedListener;
-    }
-
-    public boolean isEnableRefresh() {
-        return enableRefresh;
-    }
-
-    public void setEnableRefresh(boolean enableRefresh) {
-        this.enableRefresh = enableRefresh;
-    }
-
-    public boolean isEnableLoadMore() {
-        return enableLoadMore;
-    }
-
-    public void setEnableLoadMore(boolean enableLoadMore) {
-        this.enableLoadMore = enableLoadMore;
-    }
-
-    public boolean isEnableHeaderTranslationContent() {
-        return enableHeaderTranslationContent;
-    }
-
-    public void setEnableHeaderTranslationContent(boolean enableHeaderTranslationContent) {
-        this.enableHeaderTranslationContent = enableHeaderTranslationContent;
-    }
-
-    public boolean isEnableFooterTranslationContent() {
-        return enableFooterTranslationContent;
-    }
-
-    public void setEnableFooterTranslationContent(boolean enableFooterTranslationContent) {
-        this.enableFooterTranslationContent = enableFooterTranslationContent;
-    }
-
-    public boolean isEnableOverScrollBounce() {
-        return enableOverScrollBounce;
-    }
-
-    public void setEnableOverScrollBounce(boolean enableOverScrollBounce) {
-        this.enableOverScrollBounce = enableOverScrollBounce;
-    }
-
-    public boolean isEnablePureScrollMode() {
-        return enablePureScrollMode;
-    }
-
-    public void setEnablePureScrollMode(boolean enablePureScrollMode) {
-        this.enablePureScrollMode = enablePureScrollMode;
-    }
-
-    public boolean isEnableAutoLoadMore() {
-        return enableAutoLoadMore;
-    }
-
-    public void setEnableAutoLoadMore(boolean enableAutoLoadMore) {
-        this.enableAutoLoadMore = enableAutoLoadMore;
-    }
-
-    public boolean isEnableScrollContentWhenLoaded() {
-        return enableScrollContentWhenLoaded;
-    }
-
-    public void setEnableScrollContentWhenLoaded(boolean enableScrollContentWhenLoaded) {
-        this.enableScrollContentWhenLoaded = enableScrollContentWhenLoaded;
-    }
-
-    public boolean isEnableLoadMoreWhenContentNotFull() {
-        return enableLoadMoreWhenContentNotFull;
-    }
-
-    public void setEnableLoadMoreWhenContentNotFull(boolean enableLoadMoreWhenContentNotFull) {
-        this.enableLoadMoreWhenContentNotFull = enableLoadMoreWhenContentNotFull;
-    }
-
-    public boolean isDisableContentWhenRefresh() {
-        return disableContentWhenRefresh;
-    }
-
-    public void setDisableContentWhenRefresh(boolean disableContentWhenRefresh) {
-        this.disableContentWhenRefresh = disableContentWhenRefresh;
-    }
-
-    public boolean isDisableContentWhenLoading() {
-        return disableContentWhenLoading;
-    }
-
-    public void setDisableContentWhenLoading(boolean disableContentWhenLoading) {
-        this.disableContentWhenLoading = disableContentWhenLoading;
+        @Override
+        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            if (newState == RecyclerView.SCROLL_STATE_IDLE && moveBelowLastVisiblePosition) {
+                moveBelowLastVisiblePosition = false;
+                int firstVisiblePosition = getFirstVisibleItemPosition();
+                int movePosition = targetPosition - firstVisiblePosition;
+                if (movePosition >= 0 && movePosition < recyclerView.getChildCount()) {
+                    int top = recyclerView.getChildAt(movePosition).getTop();
+                    recyclerView.scrollBy(0, top + offSet);
+                }
+                recyclerView.removeOnScrollListener(this);
+            }
+        }
     }
 }

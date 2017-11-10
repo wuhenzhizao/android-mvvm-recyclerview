@@ -5,7 +5,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.android.tools.build:gradle:3.0.0'
         classpath 'com.jakewharton.hugo:hugo-plugin:1.2.1'
     }
 }
@@ -26,7 +26,7 @@ ext {
             "multidex"                   : "com.android.support:multidex:1.0.1",
             "framework"                  : "com.gomeos.mvvm:mvvm:1.0.0",
             "swipe"                      : "com.daimajia.swipelayout:library:1.2.0",
-            "smart_refresh"              : "com.scwang.smartrefresh:SmartRefreshLayout:1.0.3",
+            "smart_refresh"              : "com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-alpha-8",
             "smart_tab"                  : "com.ogaclejapan.smarttablayout:library:1.6.1",
             "fresco"                     : "com.facebook.fresco:fresco:1.5.0",
             "fresco_imagepipeline_okhttp": "com.facebook.fresco:imagepipeline-okhttp3:1.5.0",

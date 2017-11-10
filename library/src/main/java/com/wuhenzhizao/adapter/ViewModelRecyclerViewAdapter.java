@@ -24,7 +24,7 @@ public class ViewModelRecyclerViewAdapter<Factory extends AbsViewFactory> extend
     public ViewModelRecyclerViewAdapter(Context context) {
         super(context);
         this.viewModelTypes = new ArrayList<>();
-        setHasStableIds(false);
+        setHasStableIds(true);
     }
 
     public void setLooped(boolean looped) {

@@ -14,5 +14,5 @@ interface StickyHeaderAdapter<T extends RecyclerView.ViewHolder> {
     T onCreateHeaderViewHolder(ViewGroup parent, int position);
 
 
-    void onBindHeaderViewHolder(T viewholder, int position);
+    void onBindHeaderViewHolder(T viewHolder, int position);
 }

@@ -14,7 +14,12 @@ import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.scwang.smartrefresh.layout.impl.RefreshContentWrapper;
+import com.scwang.smartrefresh.layout.listener.OnMultiPurposeListener;
 import com.wuhenzhizao.adapter.R;
+import com.wuhenzhizao.api.OnLoadMoreListener;
+import com.wuhenzhizao.api.OnPullRefreshListener;
+import com.wuhenzhizao.api.OnRefreshOrLoadMoreListener;
+import com.wuhenzhizao.view.proxy.RefreshRecyclerViewProxy;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -26,10 +31,11 @@ import java.util.List;
 public class AdvancedRecyclerView extends SmartRefreshLayout implements DataBindingInterface {
     private BaseRecyclerView recyclerView;
 
-    private String refreshHeaderClass = ClassicsHeader.class.getName();
-    private String refreshFooterClass = ClassicsFooter.class.getName();
+    private String refreshHeaderClass = CommonHeader.class.getName();
+    private String refreshFooterClass = CommonFooter.class.getName();
     private int mode;
 
+    public static final int MODE_NONE = 0;
     public static final int MODE_NORMAL = 1;     // DefaultRecyclerView
     public static final int MODE_STICKY = 2;     // StickyHeaderRecyclerView
     public static final int MODE_SWIPE = 3;      // SwipeMenuRecyclerView
@@ -62,24 +68,18 @@ public class AdvancedRecyclerView extends SmartRefreshLayout implements DataBind
     }
 
     private void initChildView(Context context, AttributeSet attrs, int defStyleAttr) {
-        if (mode == MODE_NORMAL) {
-            setEnableRefresh(false);
-            setEnableLoadmore(false);
-            setEnableAutoLoadmore(false);
-            setEnablePureScrollMode(true);
-            setEnableOverScrollBounce(true);
-            return;
+        if (mode != MODE_NONE) {
+            initHeader(context, attrs);
+            initFooter(context, attrs);
+            initContent(context, attrs, defStyleAttr);
         }
-        initHeader(context, attrs, defStyleAttr);
-        initFooter(context, attrs, defStyleAttr);
-        initContent(context, attrs, defStyleAttr);
     }
 
-    private void initHeader(Context context, AttributeSet attrs, int defStyleAttr) {
+    private void initHeader(Context context, AttributeSet attrs) {
         try {
             Class cls = Class.forName(refreshHeaderClass);
-            Constructor constructor = cls.getDeclaredConstructor(Context.class, AttributeSet.class, Integer.class);
-            Object refreshHeader = constructor.newInstance(context, attrs, defStyleAttr);
+            Constructor constructor = cls.getDeclaredConstructor(Context.class, AttributeSet.class);
+            Object refreshHeader = constructor.newInstance(context, attrs);
             setRefreshHeader((RefreshHeader) refreshHeader);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -94,11 +94,11 @@ public class AdvancedRecyclerView extends SmartRefreshLayout implements DataBind
         }
     }
 
-    private void initFooter(Context context, AttributeSet attrs, int defStyleAttr) {
+    private void initFooter(Context context, AttributeSet attrs) {
         try {
             Class cls = Class.forName(refreshFooterClass);
-            Constructor constructor = cls.getDeclaredConstructor(Context.class, AttributeSet.class, Integer.class);
-            Object refreshFooter = constructor.newInstance(context, attrs, defStyleAttr);
+            Constructor constructor = cls.getDeclaredConstructor(Context.class, AttributeSet.class);
+            Object refreshFooter = constructor.newInstance(context, attrs);
             setRefreshFooter((RefreshFooter) refreshFooter);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -152,16 +152,33 @@ public class AdvancedRecyclerView extends SmartRefreshLayout implements DataBind
     }
 
     @Override
+    public void setItemDecoration(RecyclerView.ItemDecoration decoration) {
+        recyclerView.addItemDecoration(decoration);
+    }
+
+    @Override
     public void setItems(List items) {
         recyclerView.setItems(items);
     }
 
     @BindingAdapter("proxy")
-    public static void setProxy(AdvancedRecyclerView layout, RecyclerViewProxy proxy) {
-        layout.setOnRefreshListener(proxy.getPullRefreshListener());
-        layout.setOnLoadmoreListener(proxy.getLoadMoreListener());
-        layout.setOnRefreshLoadmoreListener(proxy.getRefreshOrLoadMoreListener());
-        layout.setOnMultiPurposeListener(proxy.getMultiChangedListener());
+    public static void setProxy(AdvancedRecyclerView layout, RefreshRecyclerViewProxy proxy) {
+        OnPullRefreshListener refreshListener = proxy.getPullRefreshListener();
+        if (refreshListener != null) {
+            layout.setOnRefreshListener(refreshListener);
+        }
+        OnLoadMoreListener loadMoreListener = proxy.getLoadMoreListener();
+        if (loadMoreListener != null) {
+            layout.setOnLoadmoreListener(loadMoreListener);
+        }
+        OnRefreshOrLoadMoreListener refreshOrLoadMoreListener = proxy.getRefreshOrLoadMoreListener();
+        if (refreshOrLoadMoreListener != null) {
+            layout.setOnRefreshLoadmoreListener(proxy.getRefreshOrLoadMoreListener());
+        }
+        OnMultiPurposeListener multiPurposeListener = proxy.getMultiChangedListener();
+        if (multiPurposeListener != null) {
+            layout.setOnMultiPurposeListener(proxy.getMultiChangedListener());
+        }
         layout.setEnableRefresh(proxy.isEnableRefresh());
         layout.setEnableLoadmore(proxy.isEnableLoadMore());
         layout.setEnableAutoLoadmore(proxy.isEnableAutoLoadMore());
@@ -169,6 +186,7 @@ public class AdvancedRecyclerView extends SmartRefreshLayout implements DataBind
         layout.setEnableFooterTranslationContent(proxy.isEnableFooterTranslationContent());
         layout.setEnableOverScrollBounce(proxy.isEnableOverScrollBounce());
         layout.setEnablePureScrollMode(proxy.isEnablePureScrollMode());
+        layout.setEnableOverScrollDrag(proxy.isEnableOverScrollDrag());
         layout.setEnableScrollContentWhenLoaded(proxy.isEnableScrollContentWhenLoaded());
         layout.setEnableLoadmoreWhenContentNotFull(proxy.isEnableLoadMoreWhenContentNotFull());
         layout.setDisableContentWhenRefresh(proxy.isDisableContentWhenRefresh());
@@ -180,5 +198,13 @@ public class AdvancedRecyclerView extends SmartRefreshLayout implements DataBind
         } else if (recyclerView instanceof StickyHeaderRecyclerView) {
             ((StickyHeaderRecyclerView) recyclerView).setHeaderClickListener(proxy.getItemHeaderClickListener());
         }
+
+        RecyclerView.ItemDecoration decoration = proxy.getItemDecoration();
+        if (decoration != null) {
+            layout.setItemDecoration(decoration);
+        }
+
+        proxy.attach(recyclerView);
+        proxy.attachRefreshView(layout);
     }
 }

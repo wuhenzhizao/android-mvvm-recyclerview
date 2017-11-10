@@ -22,6 +22,7 @@ public abstract class BaseRecyclerView<RVA extends ViewModelRecyclerViewAdapter>
     protected String itemViewFactory;
     protected boolean isLooped = false;
     protected List items;
+    protected ItemDecoration decoration;
 
     public BaseRecyclerView(Context context) {
         this(context, null);
@@ -66,15 +67,33 @@ public abstract class BaseRecyclerView<RVA extends ViewModelRecyclerViewAdapter>
         return adapter;
     }
 
+    @Override
     public void setItemViewFactory(String className) {
         AbsViewFactory factory = ObjectUtils.newInstance(className);
         factory.setContext(getContext());
         adapter.setItemViewFactory(factory);
     }
 
+    @Override
     public void setLayoutManager(LayoutManagers.LayoutManagerFactory factory) {
         super.setLayoutManager(factory.create(this));
         setAdapter(adapter);
+    }
+
+    @Override
+    public void setItemDecoration(ItemDecoration decoration) {
+        if (this.decoration == null){
+            this.decoration = decoration;
+            addItemDecoration(decoration);
+        }
+    }
+
+    public void setProxy(RecyclerViewProxy proxy) {
+        proxy.attach(this);
+        OnScrollListener scrollListener = proxy.getScrollListener();
+        if (scrollListener != null) {
+            addOnScrollListener(proxy.getScrollListener());
+        }
     }
 
     public void setItems(final List items) {
@@ -88,9 +107,5 @@ public abstract class BaseRecyclerView<RVA extends ViewModelRecyclerViewAdapter>
             }
             this.items = items;
         }
-    }
-
-    public void scrollToPosition(int position) {
-        getLayoutManager().scrollToPosition(position);
     }
 }

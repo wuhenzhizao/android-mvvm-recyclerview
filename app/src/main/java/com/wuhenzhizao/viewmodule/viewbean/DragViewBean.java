@@ -1,10 +1,12 @@
 package com.wuhenzhizao.viewmodule.viewbean;
 
+import com.wuhenzhizao.viewbean.BaseViewBean;
+
 /**
  * Created by wuhenzhizao on 2017/9/13.
  */
 
-public class DragViewBean {
+public class DragViewBean extends BaseViewBean{
     private int image;
     private String name;
 

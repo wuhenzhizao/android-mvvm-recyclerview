@@ -17,5 +17,7 @@
         <attr name="slideBarFocusTextColor" format="color" />
         <attr name="slideBarTextSize" format="dimension" />
         <attr name="slideBarFocusTextSize" format="dimension" />
+
+        <attr name="itemDecoration" format="reference" />
     </declare-styleable>
 </resources>

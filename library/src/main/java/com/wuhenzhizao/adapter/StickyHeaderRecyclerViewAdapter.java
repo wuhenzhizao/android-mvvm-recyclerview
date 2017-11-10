@@ -15,7 +15,6 @@ public class StickyHeaderRecyclerViewAdapter extends ViewModelRecyclerViewAdapte
 
     public StickyHeaderRecyclerViewAdapter(Context context) {
         super(context);
-        setHasStableIds(true);
     }
 
     @Override
@@ -30,11 +29,11 @@ public class StickyHeaderRecyclerViewAdapter extends ViewModelRecyclerViewAdapte
     }
 
     @Override
-    public void onBindHeaderViewHolder(DefaultViewHolder holder, int position) {
-        RecyclerItemViewModel recyclerItemViewModel = holder.recyclerItemViewModel;
+    public void onBindHeaderViewHolder(DefaultViewHolder viewHolder, int position) {
+        RecyclerItemViewModel recyclerItemViewModel = viewHolder.recyclerItemViewModel;
         recyclerItemViewModel.setItem(getItem(position));
-        holder.viewDataBinding.getRoot().setTag(position);
-        holder.viewDataBinding.executePendingBindings();
+        viewHolder.viewDataBinding.getRoot().setTag(position);
+        viewHolder.viewDataBinding.executePendingBindings();
     }
 
     @Override
